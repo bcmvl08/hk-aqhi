@@ -897,23 +897,64 @@
     });
 
     var links = Array.prototype.slice.call(document.querySelectorAll(".section-nav a"));
-    if ("IntersectionObserver" in window) {
-      var observer = new IntersectionObserver(function (entries) {
-        var visible = entries.filter(function (entry) { return entry.isIntersecting; });
-        if (!visible.length) return;
-        visible.sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
-        var id = "#" + visible[0].target.id;
-        links.forEach(function (link) {
-          var on = link.getAttribute("href") === id;
-          link.classList.toggle("is-active", on);
-          if (on) link.setAttribute("aria-current", "location");
-          else link.removeAttribute("aria-current");
-        });
-      }, { rootMargin: "-12% 0px -78% 0px", threshold: [0, 0.1, 0.25] });
-      document.querySelectorAll("section[id]").forEach(function (section) {
-        observer.observe(section);
+    var sections = Array.prototype.slice.call(document.querySelectorAll("section[id]"));
+    var navLock = "";
+
+    function markNav(id) {
+      links.forEach(function (link) {
+        var on = link.getAttribute("href") === "#" + id;
+        link.classList.toggle("is-active", on);
+        if (on) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
       });
     }
+
+    function sectionAtProbe() {
+      var nav = document.querySelector(".section-nav");
+      var navBottom = nav ? nav.getBoundingClientRect().bottom : 0;
+      var margin = sections[0] ? parseFloat(getComputedStyle(sections[0]).scrollMarginTop) || 0 : 0;
+      // A section scrolled into place sits about one scroll-margin below the
+      // viewport top, which can be under the sticky nav. Probe past that line.
+      var probe = Math.max(navBottom, margin) + 16;
+      var current = sections[0];
+      sections.forEach(function (section) {
+        if (section.getBoundingClientRect().top <= probe) current = section;
+      });
+      return current;
+    }
+
+    var spyQueued = false;
+    function queueSpy() {
+      if (navLock || spyQueued) return;
+      spyQueued = true;
+      requestAnimationFrame(function () {
+        spyQueued = false;
+        if (navLock) return;
+        var section = sectionAtProbe();
+        if (section) markNav(section.id);
+      });
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener("click", function () {
+        var id = (link.getAttribute("href") || "").replace(/^#/, "");
+        if (!id) return;
+        navLock = id;
+        markNav(id);
+        window.setTimeout(function () {
+          if (navLock !== id) return;
+          navLock = "";
+          queueSpy();
+        }, 1200);
+      });
+    });
+
+    window.addEventListener("scroll", queueSpy, { passive: true });
+    window.addEventListener("scrollend", function () {
+      navLock = "";
+      queueSpy();
+    });
+    window.addEventListener("resize", queueSpy);
   }
 
   bind();

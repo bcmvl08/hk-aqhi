@@ -166,6 +166,10 @@ class PageContractTests(unittest.TestCase):
         self.assertIn("actions/workflows/update-aqhi.yml", html)
         self.assertIn("#44af35", css)
         self.assertIn("#231816", css)
+        self.assertIn(".refresh:active", css)
+        self.assertIn(".refresh:disabled", css)
+        self.assertIn(".section-nav a:active", css)
+        self.assertIn("markNav", js)
 
     def test_workflow_schedule_and_dispatch(self):
         workflow = (ROOT / ".github" / "workflows" / "update-aqhi.yml").read_text(
