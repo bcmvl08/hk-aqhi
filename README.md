@@ -49,15 +49,15 @@ python3 scripts/test_weather.py
 
 ## 頁面按鈕和 Run workflow
 
-兩件事不一樣。
+兩件事一起用。
 
 | | 頁面「立即更新 / Refresh」 | Actions「Run workflow」 |
 | --- | --- | --- |
-| 做什麼 | 重新下載本站已發布的 `data/aqhi.json` 和 `data/weather.json`，重畫空氣質素圖表和天氣 | 向環保署和天文台抓數，有變才 commit |
-| 會不會打到官方 | 不會 | 會 |
+| 做什麼 | 瀏覽器直接向天文台讀現況、警告和九天預報，並嘗試讀環保署 XML。失敗就用本站已發布的 JSON，狀態列會寫明。大約每 5 分鐘再試，分頁在背景時暫停 | 向環保署和天文台抓數，有變才 commit，留給頁面當備用 |
+| 會不會打到官方 | 會。天文台允許跨站；環保署 XML 只允許 `aqhi.gov.hk`，瀏覽器通常會被拒 | 會。Actions 的伺服器不受那個跨站限制 |
 | 要不要權杖 | 不要。頁面沒有 token，也不能幫你啟動工作流程 | 用你自己的 GitHub 登入。只有有寫入權的人按得到 |
 
-真的要更新上游數據：打開 [Update AQHI and weather](https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml)，按 **Run workflow**，分支選 `main`。
+排程仍然每小時更新已發布的 JSON。打開 [Update AQHI and weather](https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml)，按 **Run workflow**，分支選 `main`，可以立刻重抓備用檔。
 
 ## 資料
 
@@ -121,11 +121,11 @@ Check without writing: `python3 scripts/fetch_aqhi.py --check` and `python3 scri
 
 | | Page button, 立即更新 / Refresh | Actions, Run workflow |
 | --- | --- | --- |
-| What it does | Reloads this site’s published `data/aqhi.json` and `data/weather.json`, then redraws AQHI and weather | Fetches the EPD and the Observatory, and commits only when either file changed |
-| Contacts the official sources | No | Yes |
+| What it does | The browser fetches Observatory current weather, warnings, and the 9-day forecast, and tries the EPD XML. On failure it uses the published JSON and says so. It tries again about every 5 minutes, and pauses while the tab is hidden | Fetches the EPD and the Observatory, and commits only when either file changed, which leaves a cache for the page |
+| Contacts the official sources | Yes. Observatory feeds allow other sites. The EPD XML allows only `aqhi.gov.hk`, so a browser on this site is usually blocked | Yes. The Actions runner is not limited by that browser rule |
 | Token | None. The page cannot start the workflow | Your own GitHub login. Only someone with write access can run it |
 
-For a true upstream refresh, open [Update AQHI and weather](https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml) and click **Run workflow** on `main`.
+The hourly job still refreshes the published JSON. Open [Update AQHI and weather](https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml) and click **Run workflow** on `main` to refresh that cache immediately.
 
 ### Data
 

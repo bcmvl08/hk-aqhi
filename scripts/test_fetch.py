@@ -170,6 +170,11 @@ class PageContractTests(unittest.TestCase):
         self.assertIn(".refresh:disabled", css)
         self.assertIn(".section-nav a:active", css)
         self.assertIn("markNav", js)
+        self.assertIn("https://data.weather.gov.hk", html)
+        self.assertIn("https://www.aqhi.gov.hk", html)
+        self.assertIn("id=\"countdown\"", html)
+        self.assertIn("prefers-reduced-motion", css)
+        self.assertNotIn("workflow/dispatches", blob)
 
     def test_workflow_schedule_and_dispatch(self):
         workflow = (ROOT / ".github" / "workflows" / "update-aqhi.yml").read_text(

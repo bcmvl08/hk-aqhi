@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 import tempfile
 import unittest
 from datetime import datetime
@@ -217,12 +218,54 @@ class WeatherPageTests(unittest.TestCase):
         js = (ROOT / "js" / "aqhi.js").read_text(encoding="utf-8")
         workflow = (ROOT / ".github" / "workflows" / "update-aqhi.yml").read_text(encoding="utf-8")
         self.assertIn("data/weather.json", js)
+        self.assertIn("fetchWeather", js)
         self.assertIn("id=\"weather\"", html)
+        self.assertIn("id=\"warn-banner\"", html)
         self.assertIn("香港天文台", html)
         self.assertIn("不是官方警報", html)
+        upstream = (ROOT / "js" / "upstream.js").read_text(encoding="utf-8")
+        self.assertIn("rhrread", upstream)
+        self.assertIn("warnsum", upstream)
+        self.assertIn("fnd", upstream)
+        self.assertIn("24aqhi_Eng.xml", upstream)
         self.assertIn("fetch_weather.py", workflow)
         self.assertIn("data/weather.json", workflow)
-        self.assertNotIn("api.github.com", html + js)
+        self.assertNotIn("api.github.com", html + js + upstream)
+
+    def test_browser_parser_matches_python_fixture(self):
+        raw = {
+            "currentTc": CURRENT_TC,
+            "currentEn": CURRENT_EN,
+            "warnTc": WARN_TC,
+            "warnEn": WARN_EN,
+            "forecastTc": FORECAST_TC,
+            "forecastEn": FORECAST_EN,
+        }
+        script = r"""
+const fs = require("fs");
+const vm = require("vm");
+const ctx = { URL };
+ctx.globalThis = ctx;
+vm.runInNewContext(fs.readFileSync("js/upstream.js", "utf8"), ctx, { filename: "js/upstream.js" });
+const raw = JSON.parse(fs.readFileSync(0, "utf8"));
+const payload = ctx.HkUpstream.buildWeather(
+  raw.currentTc, raw.currentEn, raw.warnTc, raw.warnEn, raw.forecastTc, raw.forecastEn, "2026-10-09T14:11:00+08:00"
+);
+process.stdout.write(JSON.stringify(payload));
+"""
+        completed = subprocess.run(
+            ["node", "-e", script],
+            input=json.dumps(raw),
+            text=True,
+            cwd=ROOT,
+            capture_output=True,
+            check=True,
+        )
+        parsed = json.loads(completed.stdout)
+        expected = sample(datetime(2026, 10, 9, 14, 11, tzinfo=HKT))
+        self.assertEqual(parsed["current"], expected["current"])
+        self.assertEqual(parsed["warnings"], expected["warnings"])
+        self.assertEqual(parsed["forecast"], expected["forecast"])
 
 
 if __name__ == "__main__":
