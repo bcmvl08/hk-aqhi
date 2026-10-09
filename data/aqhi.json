@@ -4,8 +4,8 @@
   "sourcePage": "https://data.gov.hk/tc-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations",
   "provider": "Environmental Protection Department",
   "timezone": "Asia/Hong_Kong",
-  "reportTime": "2026-10-09T22:30:00+08:00",
-  "fetchedAt": "2026-10-09T22:41:34+08:00",
+  "reportTime": "2026-10-09T23:30:00+08:00",
+  "fetchedAt": "2026-10-09T23:38:05+08:00",
   "title": "Environmental Protection Department - AQHI",
   "stations": [
     {
@@ -15,7 +15,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -27,13 +27,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T20:00:00+08:00",
@@ -54,12 +47,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -194,6 +181,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -207,7 +200,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -219,13 +212,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T19:00:00+08:00",
@@ -246,12 +232,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "5",
@@ -386,6 +366,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -399,28 +385,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "5",
         "value": 5,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "5",
         "value": 5,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
-          "time": "2026-10-09T22:00:00+08:00",
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "5",
           "value": 5,
           "band": "moderate"
@@ -438,12 +417,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "5",
@@ -578,6 +551,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "5",
+          "value": 5,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "5",
           "value": 5,
           "band": "moderate"
@@ -591,7 +570,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -604,13 +583,6 @@
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
           "time": "2026-10-09T21:00:00+08:00",
           "aqhi": "5",
@@ -621,8 +593,8 @@
       "highHours": 0,
       "notes": [
         {
-          "zh": "較上一小時下跌（5 → 4）。",
-          "en": "Down from the previous hour (5 → 4)."
+          "zh": "與上一小時相同。",
+          "en": "Same as the previous hour."
         },
         {
           "zh": "過去 24 小時沒有高、甚高或嚴重讀數。",
@@ -630,12 +602,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -770,6 +736,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -783,7 +755,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -795,13 +767,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T17:00:00+08:00",
@@ -822,12 +787,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -962,6 +921,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -975,7 +940,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -987,13 +952,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T20:00:00+08:00",
@@ -1014,12 +972,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -1154,6 +1106,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1167,7 +1125,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -1180,13 +1138,6 @@
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
           "time": "2026-10-09T19:00:00+08:00",
           "aqhi": "6",
@@ -1197,8 +1148,8 @@
       "highHours": 0,
       "notes": [
         {
-          "zh": "較上一小時下跌（5 → 4）。",
-          "en": "Down from the previous hour (5 → 4)."
+          "zh": "與上一小時相同。",
+          "en": "Same as the previous hour."
         },
         {
           "zh": "過去 24 小時沒有高、甚高或嚴重讀數。",
@@ -1206,12 +1157,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -1346,6 +1291,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1359,7 +1310,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -1371,13 +1322,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T20:00:00+08:00",
@@ -1398,12 +1342,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -1538,6 +1476,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1551,7 +1495,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -1564,13 +1508,6 @@
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
           "time": "2026-10-09T20:00:00+08:00",
           "aqhi": "6",
@@ -1581,8 +1518,8 @@
       "highHours": 0,
       "notes": [
         {
-          "zh": "較上一小時下跌（5 → 4）。",
-          "en": "Down from the previous hour (5 → 4)."
+          "zh": "與上一小時相同。",
+          "en": "Same as the previous hour."
         },
         {
           "zh": "過去 24 小時沒有高、甚高或嚴重讀數。",
@@ -1590,12 +1527,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -1730,6 +1661,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1743,7 +1680,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -1756,13 +1693,6 @@
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
           "time": "2026-10-09T20:00:00+08:00",
           "aqhi": "6",
@@ -1773,8 +1703,8 @@
       "highHours": 0,
       "notes": [
         {
-          "zh": "較上一小時下跌（5 → 4）。",
-          "en": "Down from the previous hour (5 → 4)."
+          "zh": "與上一小時相同。",
+          "en": "Same as the previous hour."
         },
         {
           "zh": "過去 24 小時沒有高、甚高或嚴重讀數。",
@@ -1782,12 +1712,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "5",
@@ -1922,6 +1846,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1935,9 +1865,9 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
-        "aqhi": "3",
-        "value": 3,
+        "time": "2026-10-09T23:00:00+08:00",
+        "aqhi": "2",
+        "value": 2,
         "band": "low"
       },
       "max24h": {
@@ -1947,13 +1877,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T16:00:00+08:00",
@@ -1965,8 +1888,8 @@
       "highHours": 0,
       "notes": [
         {
-          "zh": "與上一小時相同。",
-          "en": "Same as the previous hour."
+          "zh": "較上一小時下跌（3 → 2）。",
+          "en": "Down from the previous hour (3 → 2)."
         },
         {
           "zh": "過去 24 小時沒有高、甚高或嚴重讀數。",
@@ -1974,12 +1897,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "3",
@@ -2117,6 +2034,12 @@
           "aqhi": "3",
           "value": 3,
           "band": "low"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
+          "aqhi": "2",
+          "value": 2,
+          "band": "low"
         }
       ]
     },
@@ -2127,7 +2050,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -2140,13 +2063,6 @@
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
           "time": "2026-10-09T20:00:00+08:00",
           "aqhi": "5",
@@ -2166,12 +2082,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -2306,6 +2216,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2319,7 +2235,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -2331,13 +2247,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T20:00:00+08:00",
@@ -2358,12 +2267,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -2498,6 +2401,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2511,7 +2420,7 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
@@ -2523,13 +2432,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T20:00:00+08:00",
@@ -2550,12 +2452,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -2690,6 +2586,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2703,10 +2605,10 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
-        "aqhi": "4",
-        "value": 4,
-        "band": "moderate"
+        "time": "2026-10-09T23:00:00+08:00",
+        "aqhi": "3",
+        "value": 3,
+        "band": "low"
       },
       "max24h": {
         "time": "2026-10-09T19:00:00+08:00",
@@ -2715,13 +2617,6 @@
         "band": "moderate"
       },
       "dailyMax": [
-        {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "date": "2026-10-09",
           "time": "2026-10-09T19:00:00+08:00",
@@ -2733,8 +2628,8 @@
       "highHours": 0,
       "notes": [
         {
-          "zh": "與上一小時相同。",
-          "en": "Same as the previous hour."
+          "zh": "較上一小時下跌（4 → 3）。",
+          "en": "Down from the previous hour (4 → 3)."
         },
         {
           "zh": "過去 24 小時沒有高、甚高或嚴重讀數。",
@@ -2742,12 +2637,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -2885,6 +2774,12 @@
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
+          "aqhi": "3",
+          "value": 3,
+          "band": "low"
         }
       ]
     },
@@ -2895,28 +2790,21 @@
       "type": "roadside",
       "typeRaw": "Roadside Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "5",
         "value": 5,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "5",
         "value": 5,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
-          "time": "2026-10-09T22:00:00+08:00",
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "5",
           "value": 5,
           "band": "moderate"
@@ -2934,12 +2822,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -3074,6 +2956,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "5",
+          "value": 5,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "5",
           "value": 5,
           "band": "moderate"
@@ -3087,28 +2975,21 @@
       "type": "roadside",
       "typeRaw": "Roadside Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
-        "aqhi": "4",
-        "value": 4,
+        "time": "2026-10-09T23:00:00+08:00",
+        "aqhi": "5",
+        "value": 5,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-10-09T20:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "5",
         "value": 5,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
-          "time": "2026-10-09T20:00:00+08:00",
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "5",
           "value": 5,
           "band": "moderate"
@@ -3117,8 +2998,8 @@
       "highHours": 0,
       "notes": [
         {
-          "zh": "與上一小時相同。",
-          "en": "Same as the previous hour."
+          "zh": "較上一小時上升（4 → 5）。",
+          "en": "Up from the previous hour (4 → 5)."
         },
         {
           "zh": "過去 24 小時沒有高、甚高或嚴重讀數。",
@@ -3126,12 +3007,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -3268,6 +3143,12 @@
           "time": "2026-10-09T22:00:00+08:00",
           "aqhi": "4",
           "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
+          "aqhi": "5",
+          "value": 5,
           "band": "moderate"
         }
       ]
@@ -3279,28 +3160,21 @@
       "type": "roadside",
       "typeRaw": "Roadside Stations",
       "latest": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "5",
         "value": 5,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-10-09T22:00:00+08:00",
+        "time": "2026-10-09T23:00:00+08:00",
         "aqhi": "5",
         "value": 5,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-10-08",
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
-        {
           "date": "2026-10-09",
-          "time": "2026-10-09T22:00:00+08:00",
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "5",
           "value": 5,
           "band": "moderate"
@@ -3318,12 +3192,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-10-08T23:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
         {
           "time": "2026-10-09T00:00:00+08:00",
           "aqhi": "4",
@@ -3458,6 +3326,12 @@
         },
         {
           "time": "2026-10-09T22:00:00+08:00",
+          "aqhi": "5",
+          "value": 5,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-10-09T23:00:00+08:00",
           "aqhi": "5",
           "value": 5,
           "band": "moderate"
