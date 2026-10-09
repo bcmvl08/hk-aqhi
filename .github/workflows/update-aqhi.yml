@@ -1,13 +1,13 @@
-# Pull the EPD past-24-hour AQHI XML and publish data/aqhi.json.
+# Pull the EPD past-24-hour AQHI XML and the Observatory weather JSON.
 # The page is static. GitHub Pages serves this branch's root. A failed fetch
-# exits before any write, so the last good JSON stays in place. Identical
-# readings do not change the file, so this job does not commit.
+# exits before any commit, so the last good files stay in place. Identical
+# readings do not change a file, so this job commits only when AQHI or weather changed.
 #
 # Owner setting: Settings → Actions → General → Workflow permissions →
 # Read and write permissions. Pages stays "Deploy from a branch", branch
 # main, folder / (root). If a ruleset blocks the Actions bot from main, allow
 # github-actions[bot] to push.
-name: Update AQHI
+name: Update AQHI and weather
 
 on:
   schedule:
@@ -30,7 +30,9 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Run unit tests
-        run: python3 scripts/test_fetch.py
+        run: |
+          python3 scripts/test_fetch.py
+          python3 scripts/test_weather.py
 
   update:
     needs: test
@@ -46,22 +48,25 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Fetch AQHI XML
-        run: python3 scripts/fetch_aqhi.py
+      - name: Fetch AQHI and weather
+        run: |
+          python3 scripts/fetch_aqhi.py
+          python3 scripts/fetch_weather.py
         env:
           PYTHONUNBUFFERED: "1"
 
       - name: Publish when the readings change
         if: github.ref == 'refs/heads/main'
         run: |
-          if git diff --quiet -- data/aqhi.json && git diff --cached --quiet -- data/aqhi.json; then
-            echo "No change in the AQHI readings."
+          new_files=$(git ls-files --others --exclude-standard -- data/aqhi.json data/weather.json)
+          if git diff --quiet -- data/aqhi.json data/weather.json && git diff --cached --quiet -- data/aqhi.json data/weather.json && [ -z "$new_files" ]; then
+            echo "No change in AQHI or weather."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/aqhi.json
-          git commit -m "Update AQHI readings"
+          git add data/aqhi.json data/weather.json
+          git commit -m "Update AQHI and weather"
           # One attempt, then four retries. Never force-push: a failed rebase
           # is aborted so main is left untouched.
           attempt=0

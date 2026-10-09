@@ -1,5 +1,5 @@
-/* Draw the static AQHI page from data/aqhi.json on this origin.
-   The refresh button reloads that file. It does not call GitHub or the EPD. */
+/* Draw the page from data/aqhi.json and data/weather.json on this origin.
+   The refresh button reloads those files. It does not call GitHub, the EPD, or the Observatory. */
 
 (function () {
   "use strict";
@@ -20,6 +20,7 @@
 
   var state = {
     data: null,
+    weather: null,
     selectedId: null,
     filter: "all",
     loading: false
@@ -139,20 +140,34 @@
     render(data);
   }
 
-  function dataUrl() {
-    var url = new URL("data/aqhi.json", document.baseURI);
+  function fetchJson(path) {
+    var url = new URL(path, document.baseURI);
     url.searchParams.set("t", String(Date.now()));
-    return url;
-  }
-
-  function fetchData() {
-    return fetch(dataUrl(), { cache: "no-store" }).then(function (res) {
+    return fetch(url, { cache: "no-store" }).then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
-    }).then(function (data) {
-      if (!data || !Array.isArray(data.stations)) throw new Error("bad json");
-      return data;
     });
+  }
+
+  function showAqhiError() {
+    var mount = $("summary-mount");
+    mount.replaceChildren();
+    mount.appendChild(el(
+      "p",
+      "summary-loading",
+      "空氣質素讀取失敗。請按「立即更新」再試。 Could not load data/aqhi.json."
+    ));
+  }
+
+  function showWeatherError() {
+    var mount = $("weather-mount");
+    if (!mount) return;
+    mount.replaceChildren();
+    mount.appendChild(el(
+      "p",
+      "empty",
+      "天氣讀取失敗。請再按「立即更新」。 Could not load data/weather.json."
+    ));
   }
 
   function refresh() {
@@ -160,31 +175,49 @@
     state.loading = true;
     var button = $("refresh");
     var previous = state.data && state.data.reportTime;
+    var previousWeather = state.weather && state.weather.current && state.weather.current.updateTime;
     button.disabled = true;
     button.setAttribute("aria-busy", "true");
     setStatus("loading", "更新中… Refreshing…");
-    fetchData().then(function (data) {
-      var hadData = !!state.data;
-      applyData(data);
-      if (!hadData) {
-        setStatus("", "");
-      } else if (previous && previous === data.reportTime) {
-        setStatus("ok", "已重新載入。報告時間與剛才相同。 Reloaded. The report time is unchanged.");
-      } else {
-        setStatus("ok", "已重新載入本站數據。 Reloaded the published data.");
+    Promise.allSettled([
+      fetchJson("data/aqhi.json"),
+      fetchJson("data/weather.json")
+    ]).then(function (results) {
+      var aqhi = results[0].status === "fulfilled" ? results[0].value : null;
+      var weather = results[1].status === "fulfilled" ? results[1].value : null;
+      var aqhiOk = !!(aqhi && Array.isArray(aqhi.stations));
+      var weatherOk = !!(weather && weather.forecast && weather.current);
+      var hadAqhi = !!state.data;
+      var hadWeather = !!state.weather;
+      if (aqhiOk) applyData(aqhi);
+      else if (!hadAqhi) showAqhiError();
+      if (weatherOk) {
+        state.weather = weather;
+        renderWeather(weather);
+      } else if (!hadWeather) showWeatherError();
+
+      if (!hadAqhi && !hadWeather) {
+        if (aqhiOk && weatherOk) setStatus("", "");
+        else if (!aqhiOk && !weatherOk) setStatus("error", "讀取失敗。請再按「立即更新」。 Could not load the published data.");
+        else if (!weatherOk) setStatus("error", "空氣質素已載入。天氣讀取失敗。 AQHI loaded. Weather did not.");
+        else setStatus("error", "天氣已載入。空氣質素讀取失敗。 Weather loaded. AQHI did not.");
+        return;
       }
-    }).catch(function () {
-      if (state.data) {
+      if (aqhiOk && weatherOk) {
+        var sameAqhi = previous && previous === aqhi.reportTime;
+        var nextWeather = weather.current && weather.current.updateTime;
+        var sameWeather = previousWeather && previousWeather === nextWeather;
+        if (sameAqhi && sameWeather) {
+          setStatus("ok", "已重新載入。空氣質素和天氣的更新時間與剛才相同。 Reloaded. AQHI and weather times are unchanged.");
+        } else {
+          setStatus("ok", "已重新載入本站的空氣質素和天氣。 Reloaded the published AQHI and weather.");
+        }
+      } else if (aqhiOk) {
+        setStatus("error", "空氣質素已重新載入。天氣讀取失敗，仍顯示上一次的天氣。 AQHI reloaded. Weather failed; showing the last weather copy.");
+      } else if (weatherOk) {
+        setStatus("error", "天氣已重新載入。空氣質素讀取失敗，仍顯示上一次的指數。 Weather reloaded. AQHI failed; showing the last AQHI copy.");
+      } else if (hadAqhi || hadWeather) {
         setStatus("error", "讀取失敗，仍顯示上一次成功的數據。 Could not reload. Showing the last successful copy.");
-      } else {
-        setStatus("error", "讀取失敗。請再按「立即更新」。 Could not load data/aqhi.json. Press Refresh to try again.");
-        var mount = $("summary-mount");
-        mount.replaceChildren();
-        mount.appendChild(el(
-          "p",
-          "summary-loading",
-          "讀取失敗。請按「立即更新」再試。 Could not load the published data."
-        ));
       }
     }).finally(function () {
       state.loading = false;
@@ -606,6 +639,232 @@
     renderSelect(data);
     renderChart(data);
     renderDaily(data);
+  }
+
+  function iconKind(code) {
+    var n = Number(code);
+    if (n >= 50 && n <= 52) return "sun";
+    if (n === 53 || n === 54) return "sun-rain";
+    if (n === 60 || n === 61 || n === 76) return "cloud";
+    if (n >= 62 && n <= 64) return "rain";
+    if (n === 65) return "thunder";
+    if ((n >= 70 && n <= 75) || n === 77) return "sun";
+    if (n === 80) return "wind";
+    if (n === 81 || n === 90 || n === 91) return "sun";
+    if (n === 82) return "rain";
+    if (n === 83 || n === 84 || n === 85) return "fog";
+    if (n === 92 || n === 93) return "cold";
+    return "cloud";
+  }
+
+  function addShape(svg, tag, attrs) {
+    svg.appendChild(svgEl(tag, attrs));
+  }
+
+  function weatherGlyph(icon) {
+    var kind = iconKind(icon);
+    var svg = svgEl("svg", { viewBox: "0 0 32 32", class: "wx-glyph", "aria-hidden": "true" });
+    var ink = "#5f584e";
+    var sun = "#c47d08";
+    var rain = "#1d5550";
+    if (kind === "sun" || kind === "sun-rain" || kind === "hot") {
+      addShape(svg, "circle", { cx: "16", cy: kind === "sun-rain" ? "12" : "16", r: "5", fill: sun });
+      [[16, 2, 16, 5], [26, 6, 24, 8], [30, 16, 27, 16], [26, 26, 24, 24], [16, 30, 16, 27], [6, 26, 8, 24], [2, 16, 5, 16], [6, 6, 8, 8]].forEach(function (ray) {
+        if (kind === "sun-rain" && ray[1] > 20) return;
+        addShape(svg, "line", { x1: ray[0], y1: ray[1], x2: ray[2], y2: ray[3], stroke: sun, "stroke-width": "1.6", "stroke-linecap": "round" });
+      });
+    }
+    if (kind === "cloud" || kind === "rain" || kind === "thunder" || kind === "fog" || kind === "sun-rain") {
+      var y = kind === "sun-rain" ? 8 : 0;
+      addShape(svg, "circle", { cx: "13", cy: 14 + y, r: "5", fill: "#fff", stroke: ink, "stroke-width": "1.4" });
+      addShape(svg, "circle", { cx: "20", cy: 13 + y, r: "4", fill: "#fff", stroke: ink, "stroke-width": "1.4" });
+      addShape(svg, "rect", { x: "10", y: 14 + y, width: "12", height: "6", fill: "#fff" });
+    }
+    if (kind === "rain" || kind === "sun-rain" || kind === "thunder") {
+      [[12, 24, 10, 29], [18, 24, 16, 29], [24, 24, 22, 29]].forEach(function (drop) {
+        addShape(svg, "line", { x1: drop[0], y1: drop[1], x2: drop[2], y2: drop[3], stroke: rain, "stroke-width": "1.6", "stroke-linecap": "round" });
+      });
+    }
+    if (kind === "thunder") {
+      addShape(svg, "polygon", { points: "17,16 13,22 16,22 14,28 21,20 17,20", fill: "#c47d08" });
+    }
+    if (kind === "wind") {
+      [[4, 12, 24, 12], [6, 17, 26, 17], [8, 22, 22, 22]].forEach(function (line) {
+        addShape(svg, "line", { x1: line[0], y1: line[1], x2: line[2], y2: line[3], stroke: ink, "stroke-width": "1.6", "stroke-linecap": "round" });
+      });
+    }
+    if (kind === "fog") {
+      [[6, 12, 26, 12], [4, 17, 28, 17], [8, 22, 24, 22]].forEach(function (line) {
+        addShape(svg, "line", { x1: line[0], y1: line[1], x2: line[2], y2: line[3], stroke: ink, "stroke-width": "1.8", "stroke-linecap": "round" });
+      });
+    }
+    if (kind === "cold") {
+      addShape(svg, "circle", { cx: "16", cy: "16", r: "4", fill: "none", stroke: "#1d5550", "stroke-width": "1.6" });
+      [[16, 4, 16, 10], [16, 22, 16, 28], [4, 16, 10, 16], [22, 16, 28, 16]].forEach(function (line) {
+        addShape(svg, "line", { x1: line[0], y1: line[1], x2: line[2], y2: line[3], stroke: "#1d5550", "stroke-width": "1.4", "stroke-linecap": "round" });
+      });
+    }
+    return svg;
+  }
+
+  function warningGlyph(kind) {
+    var svg = svgEl("svg", { viewBox: "0 0 32 32", class: "warn-glyph", "aria-hidden": "true" });
+    if (kind === "rain" || kind === "thunder") {
+      addShape(svg, "path", { d: "M10 6 C10 6 6 14 6 18 a6 6 0 0 0 12 0 C18 14 14 6 14 6", fill: "currentColor" });
+      addShape(svg, "path", { d: "M18 8 C18 8 15 14 15 17 a4 4 0 0 0 8 0 C23 14 20 8 20 8", fill: "currentColor" });
+    } else if (kind === "cyclone" || kind === "wind") {
+      addShape(svg, "circle", { cx: "16", cy: "16", r: "3", fill: "currentColor" });
+      addShape(svg, "path", { d: "M16 6 a8 8 0 0 1 0 16", fill: "none", stroke: "currentColor", "stroke-width": "2" });
+      addShape(svg, "path", { d: "M16 10 a5 5 0 0 0 0 12", fill: "none", stroke: "currentColor", "stroke-width": "2" });
+    } else if (kind === "fire") {
+      addShape(svg, "path", { d: "M16 4 C16 12 8 14 8 21 a8 8 0 0 0 16 0 C24 14 16 12 16 4 Z", fill: "currentColor" });
+    } else if (kind === "hot") {
+      addShape(svg, "circle", { cx: "16", cy: "16", r: "5", fill: "currentColor" });
+    } else if (kind === "cold") {
+      addShape(svg, "circle", { cx: "16", cy: "16", r: "3", fill: "currentColor" });
+      addShape(svg, "path", { d: "M16 5 V27 M6 10 L26 22 M26 10 L6 22", fill: "none", stroke: "currentColor", "stroke-width": "1.6" });
+    } else {
+      addShape(svg, "path", { d: "M16 5 L28 27 H4 Z", fill: "none", stroke: "currentColor", "stroke-width": "2" });
+      addShape(svg, "line", { x1: "16", y1: "13", x2: "16", y2: "20", stroke: "currentColor", "stroke-width": "2" });
+    }
+    return svg;
+  }
+
+  function placeLine(zh, en) {
+    var node = el("span", "place-line");
+    node.appendChild(document.createTextNode(zh || ""));
+    if (en && en !== zh) {
+      node.appendChild(document.createTextNode(" "));
+      node.appendChild(el("span", "en", en));
+    }
+    return node;
+  }
+
+  function renderWeather(data) {
+    var mount = $("weather-mount");
+    if (!mount) return;
+    mount.replaceChildren();
+    var current = data.current || {};
+    var forecast = data.forecast || {};
+    setTime("weather-time", current.updateTime || forecast.updateTime);
+    setTime("weather-fetched", data.fetchedAt);
+
+    var warnings = el("div", "warn-row");
+    warnings.setAttribute("role", "region");
+    warnings.setAttribute("aria-label", "生效警告");
+    if (!data.warnings || !data.warnings.length) {
+      warnings.appendChild(el("p", "warn-clear", "現時沒有生效警告。 No warning in force."));
+    } else {
+      data.warnings.forEach(function (warning) {
+        var chip = el("article", "warn-chip warn-" + (warning.level || "alert"));
+        chip.appendChild(warningGlyph(warning.kind));
+        var text = el("div");
+        text.appendChild(el("p", "warn-name", warning.nameZh || warning.code || ""));
+        if (warning.nameEn) text.appendChild(el("p", "warn-name-en", warning.nameEn));
+        if (warning.issueTime) text.appendChild(el("p", "warn-time", "發出 " + formatHKT(warning.issueTime)));
+        chip.appendChild(text);
+        warnings.appendChild(chip);
+      });
+    }
+    mount.appendChild(warnings);
+
+    var now = el("div", "wx-now");
+    var figure = el("div", "wx-figure");
+    figure.appendChild(weatherGlyph(current.icon));
+    if (current.temperature && current.temperature.value != null) {
+      var temp = el("p", "temp-num", String(current.temperature.value) + "°");
+      figure.appendChild(temp);
+      var where = el("p", "wx-place");
+      where.appendChild(placeLine(current.temperature.placeZh, current.temperature.placeEn));
+      figure.appendChild(where);
+      if (current.temperature.min != null && current.temperature.max != null && current.temperature.min !== current.temperature.max) {
+        figure.appendChild(el("p", "wx-range", "各站 " + current.temperature.min + "–" + current.temperature.max + "°"));
+      }
+    } else {
+      figure.appendChild(el("p", "temp-num", "—"));
+    }
+    var condition = el("p", "wx-condition");
+    condition.appendChild(document.createTextNode(current.iconZh || "現況"));
+    if (current.iconEn) {
+      condition.appendChild(document.createTextNode(" "));
+      condition.appendChild(el("span", "en", current.iconEn));
+    }
+    figure.appendChild(condition);
+    now.appendChild(figure);
+
+    var facts = el("ul", "wx-facts");
+    if (current.humidity && current.humidity.value != null) {
+      var hum = el("li");
+      hum.appendChild(el("span", "fact-k", "濕度 Humidity"));
+      hum.appendChild(el("span", "fact-v", current.humidity.value + "%"));
+      facts.appendChild(hum);
+    }
+    if (current.rainfall && current.rainfall.max != null) {
+      var rain = el("li");
+      rain.appendChild(el("span", "fact-k", "雨量 Rain"));
+      rain.appendChild(el("span", "fact-v", current.rainfall.max + " mm"));
+      var rainSub = "各區最高 District maximum";
+      if (current.rainfall.leaders && current.rainfall.leaders.length) {
+        rainSub += " · " + current.rainfall.leaders.map(function (item) { return item.placeZh; }).join("、");
+      }
+      if (current.rainfall.startTime && current.rainfall.endTime) {
+        rainSub += " · " + hourText(current.rainfall.startTime) + "–" + hourText(current.rainfall.endTime);
+      }
+      rain.appendChild(el("span", "fact-sub", rainSub));
+      facts.appendChild(rain);
+    }
+    if (current.uv && current.uv.value != null) {
+      var uv = el("li");
+      uv.appendChild(el("span", "fact-k", "紫外線 UV"));
+      var uvBand = { "低": "uv-low", "中": "uv-mod", "高": "uv-high", "甚高": "uv-vhigh", "極高": "uv-extreme" };
+      var uvValue = el("span", "fact-v " + (uvBand[current.uv.descZh] || ""), String(current.uv.value));
+      if (current.uv.descZh) uvValue.appendChild(document.createTextNode(" " + current.uv.descZh));
+      if (current.uv.descEn) uvValue.appendChild(document.createTextNode(" " + current.uv.descEn));
+      uv.appendChild(uvValue);
+      var uvPlace = current.uv.placeZh || "";
+      if (current.uv.recordDescZh) uvPlace += (uvPlace ? " · " : "") + current.uv.recordDescZh;
+      if (uvPlace) uv.appendChild(el("span", "fact-sub", uvPlace));
+      facts.appendChild(uv);
+    }
+    now.appendChild(facts);
+    mount.appendChild(now);
+
+    [current.messageZh, current.messageEn, current.cycloneMessageZh, current.cycloneMessageEn].forEach(function (message, index) {
+      if (!message) return;
+      mount.appendChild(el("p", index % 2 === 0 ? "wx-message" : "wx-message en", message));
+    });
+
+    var scroller = el("div", "forecast-scroller");
+    var strip = el("div", "forecast-strip");
+    strip.setAttribute("role", "list");
+    (forecast.days || []).forEach(function (day) {
+      var card = el("article", "forecast-day");
+      card.setAttribute("role", "listitem");
+      card.appendChild(el("p", "forecast-week", day.weekZh || dayText(day.date)));
+      if (day.weekEn) card.appendChild(el("p", "forecast-en", day.weekEn));
+      card.appendChild(el("p", "forecast-date", dayText(day.date)));
+      card.appendChild(weatherGlyph(day.icon));
+      var high = day.maxTemp == null ? "—" : day.maxTemp + "°";
+      var low = day.minTemp == null ? "—" : day.minTemp + "°";
+      card.appendChild(el("p", "forecast-temp", high + " / " + low));
+      if (day.iconZh) card.appendChild(el("p", "forecast-icon", day.iconZh));
+      if (day.weatherZh) card.appendChild(el("p", "forecast-wx", day.weatherZh));
+      if (day.weatherEn) card.appendChild(el("p", "forecast-wx en", day.weatherEn));
+      if (day.psrZh) card.appendChild(el("p", "forecast-psr", "顯著降雨 " + day.psrZh + (day.psrEn ? " " + day.psrEn : "")));
+      var detail = [day.weatherZh, day.weatherEn, day.windZh, day.windEn].filter(Boolean).join("\n");
+      if (detail) card.title = detail;
+      strip.appendChild(card);
+    });
+    scroller.appendChild(strip);
+    mount.appendChild(scroller);
+
+    if (forecast.generalSituationZh || forecast.generalSituationEn) {
+      var outlook = el("div", "outlook");
+      outlook.appendChild(el("h3", null, "未來數天"));
+      if (forecast.generalSituationZh) outlook.appendChild(el("p", null, forecast.generalSituationZh));
+      if (forecast.generalSituationEn) outlook.appendChild(el("p", "en", forecast.generalSituationEn));
+      mount.appendChild(outlook);
+    }
   }
 
   function bind() {

@@ -1,8 +1,10 @@
-# 香港空氣質素健康指數走勢
+# 香港空氣質素與天氣
 
-過去 24 小時、各監測站的空氣質素健康指數。頁面是靜態的，讀本倉庫的 [`data/aqhi.json`](data/aqhi.json)。沒有帳戶，沒有密鑰，也沒有付費服務。
+同一個靜態頁：環境保護署過去 24 小時的空氣質素健康指數，加上香港天文台的現況、生效警告和九天預報。頁面讀本倉庫的 [`data/aqhi.json`](data/aqhi.json) 和 [`data/weather.json`](data/weather.json)。沒有帳戶，沒有密鑰，也沒有付費服務。
 
-GitHub Actions 每小時向環境保護署的公開 XML 取數。數字或報告時間有變才把新的 JSON 推上 `main`。取數失敗就停手，上一份照舊留在網站上。GitHub Pages 由 `main` 分支的根目錄發布。
+GitHub Actions 每小時向兩個公開來源取數。空氣質素或天氣有變才把新的 JSON 推上 `main`。任一次取數失敗就停手，不 commit，上一份照舊留在網站上。GitHub Pages 由 `main` 分支的根目錄發布。
+
+這不是官方警報工具。排程大約每小時一次，GitHub 也可能遲到，警告會遲過天文台網站。
 
 [English notes](#english)
 
@@ -27,21 +29,23 @@ GitHub Actions 每小時向環境保護署的公開 XML 取數。數字或報告
 
 ## 排程
 
-工作流程是 [Update AQHI](.github/workflows/update-aqhi.yml)。
+工作流程是 [Update AQHI and weather](.github/workflows/update-aqhi.yml)。
 
-- Cron：`20 * * * *`，每小時第 20 分。香港是 UTC+8，所以分鐘和香港時間一樣。環保署的 XML 通常在每小時約第 10 分更新，第 20 分再抓，比較容易抓到該小時的檔。
-- GitHub 的排程不保證準時，有時會遲十幾分鐘。
+- Cron：`20 * * * *`，每小時第 20 分。香港是 UTC+8，所以分鐘和香港時間一樣。環保署的 XML 通常在每小時約第 10 分更新，第 20 分再抓，比較容易抓到該小時的檔。天文台的現況更新更密，但本站跟著同一個小時排程走。
+- GitHub 的排程不保證準時，有時會遲十幾分鐘。警告因此可能遲過天文台。
 - 連續 60 日沒有任何倉庫活動時，GitHub 會暫停排程。到 Actions 手動跑一次就會恢復。
-- 讀到的指數和報告時間跟上一份一樣時，不會 commit。
+- 空氣質素和天氣都跟上一份一樣時，不會 commit。只有其中一份有變，也會 commit。
 
 本機重抓：
 
 ```bash
 python3 scripts/fetch_aqhi.py
+python3 scripts/fetch_weather.py
 python3 scripts/test_fetch.py
+python3 scripts/test_weather.py
 ```
 
-只檢查、不寫檔：`python3 scripts/fetch_aqhi.py --check`。
+只檢查、不寫檔：`python3 scripts/fetch_aqhi.py --check` 和 `python3 scripts/fetch_weather.py --check`。
 
 ## 頁面按鈕和 Run workflow
 
@@ -49,25 +53,30 @@ python3 scripts/test_fetch.py
 
 | | 頁面「立即更新 / Refresh」 | Actions「Run workflow」 |
 | --- | --- | --- |
-| 做什麼 | 重新下載本站已發布的 `data/aqhi.json`，重畫圖表，更新畫面上的時間 | 向環保署抓 XML，數字有變才 commit |
-| 會不會打到環保署 | 不會 | 會 |
+| 做什麼 | 重新下載本站已發布的 `data/aqhi.json` 和 `data/weather.json`，重畫空氣質素圖表和天氣 | 向環保署和天文台抓數，有變才 commit |
+| 會不會打到官方 | 不會 | 會 |
 | 要不要權杖 | 不要。頁面沒有 token，也不能幫你啟動工作流程 | 用你自己的 GitHub 登入。只有有寫入權的人按得到 |
 
-真的要更新上游數據：打開 [Update AQHI](https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml)，按 **Run workflow**，分支選 `main`。
+真的要更新上游數據：打開 [Update AQHI and weather](https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml)，按 **Run workflow**，分支選 `main`。
 
 ## 資料
 
 - 環境保護署 XML：<https://www.aqhi.gov.hk/epd/ddata/html/out/24aqhi_Eng.xml>
-- data.gov.hk 資料集：<https://data.gov.hk/tc-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations>
-- 正式網站與健康建議：<https://www.aqhi.gov.hk/>
+- 空氣質素資料集：<https://data.gov.hk/tc-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations>
+- 天文台現況：<https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc>
+- 天文台警告一覽（空白即沒有生效警告）：<https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc>
+- 天文台九天預報：<https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc>
+- 正式網站：<https://www.aqhi.gov.hk/> 、<https://www.hko.gov.hk/>
 
 指數 1–3 低、4–6 中、7 高、8–10 甚高、10+ 嚴重。顏色沿用環保署網站。本頁不是醫療建議。
 
 ## English
 
-Static Hong Kong AQHI trend for the past 24 hours at each monitoring station. The page reads [`data/aqhi.json`](data/aqhi.json) from this repository. No account, no secrets, no paid services.
+One static page: the Environmental Protection Department’s past-24-hour Air Quality Health Index, plus the Hong Kong Observatory’s current weather, warnings in force, and 9-day forecast. The page reads [`data/aqhi.json`](data/aqhi.json) and [`data/weather.json`](data/weather.json). No account, no secrets, no paid services.
 
-GitHub Actions fetches the Environmental Protection Department’s public XML every hour and pushes to `main` only when the readings or the report time change. A failed fetch leaves the last good file in place. GitHub Pages publishes the root of `main`.
+GitHub Actions fetches both public sources every hour and pushes to `main` only when AQHI or weather changed. If either fetch fails, the job stops without a commit and the last good files stay in place. GitHub Pages publishes the root of `main`.
+
+This is not an official alert tool. The schedule is about hourly, and GitHub may start it late, so warnings can lag the Observatory.
 
 ### GitHub Pages
 
@@ -90,36 +99,41 @@ If a ruleset blocks the bot, allow `github-actions[bot]` to push. Leave Pages on
 
 ### Schedule
 
-Workflow: [Update AQHI](.github/workflows/update-aqhi.yml).
+Workflow: [Update AQHI and weather](.github/workflows/update-aqhi.yml).
 
-- Cron `20 * * * *` (minute 20 of every hour). Hong Kong is UTC+8, so the minute matches Hong Kong time. The EPD file usually appears around minute 10, and minute 20 is late enough to catch it.
-- GitHub may start the job later than the cron time.
+- Cron `20 * * * *` (minute 20 of every hour). Hong Kong is UTC+8, so the minute matches Hong Kong time. The EPD file usually appears around minute 10, and minute 20 is late enough to catch it. Observatory observations update more often; this site still follows the same hourly job.
+- GitHub may start the job later than the cron time, so warnings can lag the Observatory.
 - GitHub pauses scheduled workflows after 60 days without repository activity. One manual run turns them back on.
-- Identical readings do not produce a commit.
+- A commit happens when either file changed. Identical AQHI and weather produce no commit.
 
 Local commands:
 
 ```bash
 python3 scripts/fetch_aqhi.py
+python3 scripts/fetch_weather.py
 python3 scripts/test_fetch.py
+python3 scripts/test_weather.py
 ```
 
-Check without writing: `python3 scripts/fetch_aqhi.py --check`.
+Check without writing: `python3 scripts/fetch_aqhi.py --check` and `python3 scripts/fetch_weather.py --check`.
 
 ### Page button vs Run workflow
 
 | | Page button, 立即更新 / Refresh | Actions, Run workflow |
 | --- | --- | --- |
-| What it does | Reloads this site’s published `data/aqhi.json`, redraws the charts, and updates the times on the page | Fetches the EPD XML and commits only when the figures change |
-| Contacts the EPD | No | Yes |
+| What it does | Reloads this site’s published `data/aqhi.json` and `data/weather.json`, then redraws AQHI and weather | Fetches the EPD and the Observatory, and commits only when either file changed |
+| Contacts the official sources | No | Yes |
 | Token | None. The page cannot start the workflow | Your own GitHub login. Only someone with write access can run it |
 
-For a true upstream refresh, open [Update AQHI](https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml) and click **Run workflow** on `main`.
+For a true upstream refresh, open [Update AQHI and weather](https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml) and click **Run workflow** on `main`.
 
 ### Data
 
 - EPD XML: <https://www.aqhi.gov.hk/epd/ddata/html/out/24aqhi_Eng.xml>
-- data.gov.hk dataset: <https://data.gov.hk/en-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations>
-- Official site and health advice: <https://www.aqhi.gov.hk/>
+- AQHI dataset: <https://data.gov.hk/en-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations>
+- Observatory current weather: <https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=en>
+- Observatory warning summary (an empty object means nothing is in force): <https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=en>
+- Observatory 9-day forecast: <https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en>
+- Official sites: <https://www.aqhi.gov.hk/> and <https://www.hko.gov.hk/>
 
 Bands: 1–3 Low, 4–6 Moderate, 7 High, 8–10 Very High, 10+ Serious. Colours follow the EPD site. This page is not medical advice.
