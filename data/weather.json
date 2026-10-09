@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "provider": "Hong Kong Observatory",
   "timezone": "Asia/Hong_Kong",
-  "fetchedAt": "2026-10-10T01:36:10+08:00",
+  "fetchedAt": "2026-10-10T02:41:04+08:00",
   "sources": {
     "current": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc",
     "warnings": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc",
     "forecast": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc"
   },
   "current": {
-    "updateTime": "2026-10-10T01:02:00+08:00",
+    "updateTime": "2026-10-10T02:02:00+08:00",
     "icon": 77,
     "iconZh": "天色大致良好",
     "iconEn": "Mainly Fine",
@@ -18,7 +18,7 @@
       "placeEn": "Hong Kong Observatory",
       "value": 27,
       "unit": "C",
-      "time": "2026-10-10T01:00:00+08:00",
+      "time": "2026-10-10T02:00:00+08:00",
       "min": 23,
       "max": 27
     },
@@ -27,11 +27,11 @@
       "placeEn": "Hong Kong Observatory",
       "value": 75,
       "unit": "percent",
-      "time": "2026-10-10T01:00:00+08:00"
+      "time": "2026-10-10T02:00:00+08:00"
     },
     "rainfall": {
-      "startTime": "2026-10-09T23:45:00+08:00",
-      "endTime": "2026-10-10T00:45:00+08:00",
+      "startTime": "2026-10-10T00:45:00+08:00",
+      "endTime": "2026-10-10T01:45:00+08:00",
       "unit": "mm",
       "max": 0,
       "districtCount": 18,
