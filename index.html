@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self'; font-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <title>香港空氣質素健康指數</title>
+  <meta name="description" content="環境保護署過去 24 小時各監測站空氣質素健康指數。Past 24-hour AQHI for each Hong Kong monitoring station.">
+  <meta name="color-scheme" content="light">
+  <link rel="stylesheet" href="css/aqhi.css">
+</head>
+<body>
+  <a class="skip" href="#summary">跳至概況</a>
+  <article class="sheet">
+    <header class="mast">
+      <p class="kicker">環境保護署 · 過去二十四小時</p>
+      <h1>香港空氣質素健康指數</h1>
+      <p class="subtitle" lang="en">Air Quality Health Index, past 24 hours at each monitoring station.</p>
+      <p class="updated">最後更新 <span class="en" lang="en">Last updated</span>：<strong><time id="updated-time">—</time></strong>（香港時間 <span lang="en">HKT</span>）</p>
+      <p class="fetched">報告組建 <span class="en" lang="en">Report built</span> <time id="report-time">—</time> · 本站擷取 <span class="en" lang="en">Site copy</span> <time id="fetched-time">—</time></p>
+      <div class="actions">
+        <button type="button" class="refresh" id="refresh">立即更新 / Refresh</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
+      <p class="tip">「立即更新」只重新讀取本站已發布的 <code>data/aqhi.json</code>（網址加上時間參數，避開快取），然後重畫圖表和「最後更新」。它不會向環境保護署索取新數。本頁沒有 GitHub 權杖，也不能代為啟動工作流程。要向環保署重新取數，請到 <a href="https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml">Actions 的 Update AQHI</a> 按 <span lang="en">Run workflow</span>。<span lang="en">Refresh only reloads this site’s published JSON and redraws the page. It does not contact the EPD. For a true upstream refresh, open that Actions workflow and click Run workflow.</span></p>
+    </header>
+
+    <nav class="section-nav" aria-label="頁內">
+      <a href="#summary" class="is-active" aria-current="location">概況 <span class="en" lang="en">Now</span></a>
+      <a href="#stations">監測站 <span class="en" lang="en">Stations</span></a>
+      <a href="#trend">走勢 <span class="en" lang="en">Trend</span></a>
+      <a href="#daily">最高 <span class="en" lang="en">Max</span></a>
+      <a href="#about">說明 <span class="en" lang="en">Notes</span></a>
+    </nav>
+
+    <section class="summary" id="summary" aria-labelledby="summary-title">
+      <h2 id="summary-title" class="visually-hidden">概況</h2>
+      <div id="summary-mount">
+        <p class="summary-loading">正在讀取本站數據… <span lang="en">Loading the published data…</span></p>
+      </div>
+    </section>
+
+    <section id="stations" aria-labelledby="stations-title">
+      <h2 id="stations-title">各監測站最新讀數 <span class="en-title" lang="en">Latest reading at each station</span></h2>
+      <p class="section-lead">每張卡是一個監測站。顏色跟環保署的健康風險級別。點卡可看 24 小時走勢。路邊站適合長時間留在繁忙街道的人；多數時間在一般地區，看一般監測站即可。</p>
+      <div class="tool-row">
+        <span class="tool-label" id="filter-label">範圍</span>
+        <div class="seg" role="group" aria-labelledby="filter-label">
+          <button type="button" data-filter="all" aria-pressed="true">全部 <span class="en" lang="en">All</span><span data-count="all"></span></button>
+          <button type="button" data-filter="general" aria-pressed="false">一般 <span class="en" lang="en">General</span><span data-count="general"></span></button>
+          <button type="button" data-filter="roadside" aria-pressed="false">路邊 <span class="en" lang="en">Roadside</span><span data-count="roadside"></span></button>
+        </div>
+      </div>
+      <div class="station-grid" id="station-grid"></div>
+      <p class="empty" id="station-empty" hidden>這個範圍沒有監測站。</p>
+    </section>
+
+    <section id="trend" aria-labelledby="trend-title">
+      <h2 id="trend-title">二十四小時走勢 <span class="en-title" lang="en">24-hour trend</span></h2>
+      <p class="section-lead">直柱高度是該小時的空氣質素健康指數，1 至 10，10+ 畫到頂。沒有讀數的小時是短灰柱。同日有多個小時同為最高時，時間取最遲的一小時。</p>
+      <div class="chart-head">
+        <label class="station-select">監測站 <span lang="en">Station</span>
+          <select id="station-select"></select>
+        </label>
+      </div>
+      <div class="chart-layout">
+        <div class="chart-panel" id="chart-panel"></div>
+        <div class="chart-side" id="chart-side"></div>
+      </div>
+      <div class="hour-table-wrap">
+        <table class="hour-table">
+          <caption class="visually-hidden">所選監測站每小時讀數</caption>
+          <thead>
+            <tr>
+              <th>時間 <span lang="en">Time</span></th>
+              <th>指數 <span lang="en">AQHI</span></th>
+              <th>級別 <span lang="en">Band</span></th>
+            </tr>
+          </thead>
+          <tbody id="hour-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="daily" aria-labelledby="daily-title">
+      <h2 id="daily-title">每日最高與備註 <span class="en-title" lang="en">Daily maximum and notes</span></h2>
+      <p class="section-lead">過去約 24 小時通常跨兩日（香港時間）。最高是該日有讀數的小時之中最大的指數。</p>
+      <div class="hour-table-wrap">
+        <table class="max-table">
+          <caption class="visually-hidden">各站每日最高</caption>
+          <thead id="daily-head"></thead>
+          <tbody id="daily-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">說明 <span class="en-title" lang="en">Notes</span></h2>
+      <table class="scale">
+        <caption class="visually-hidden">健康風險級別</caption>
+        <thead>
+          <tr>
+            <th>級別</th>
+            <th lang="en">Band</th>
+            <th>指數</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="badge badge-low">低</span></td><td lang="en">Low</td><td>1–3</td></tr>
+          <tr><td><span class="badge badge-moderate">中</span></td><td lang="en">Moderate</td><td>4–6</td></tr>
+          <tr><td><span class="badge badge-high">高</span></td><td lang="en">High</td><td>7</td></tr>
+          <tr><td><span class="badge badge-very-high">甚高</span></td><td lang="en">Very High</td><td>8–10</td></tr>
+          <tr><td><span class="badge badge-serious">嚴重</span></td><td lang="en">Serious</td><td>10+</td></tr>
+        </tbody>
+      </table>
+      <div class="disclaimer">
+        <p>本頁轉載環境保護署公布的空氣質素健康指數，方便看過去 24 小時的走勢。這不是醫療建議，也不能取代環保署網站的正式數字。身體不適請諮詢醫護人員。預防建議以環保署原文為準。</p>
+        <p lang="en">This page republishes the Environmental Protection Department’s Air Quality Health Index so the past 24 hours are easier to scan. It is not medical advice and does not replace the official figures. If you feel unwell, talk to a clinician. Follow the EPD’s own health advice.</p>
+      </div>
+      <ul class="credits">
+        <li>資料 <span lang="en">Data</span>：<a href="https://www.aqhi.gov.hk/">環境保護署 Environmental Protection Department</a></li>
+        <li>即時 XML <span lang="en">Live XML</span>：<a href="https://www.aqhi.gov.hk/epd/ddata/html/out/24aqhi_Eng.xml">24aqhi_Eng.xml</a></li>
+        <li>資料集 <span lang="en">Dataset</span>：<a href="https://data.gov.hk/tc-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations">data.gov.hk（繁中）</a> · <a href="https://data.gov.hk/en-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations" lang="en">English</a></li>
+        <li>健康建議 <span lang="en">Health advice</span>：<a href="https://www.aqhi.gov.hk/tc/health-advice/sub-health-advice.html">環保署預防措施</a> · <a href="https://www.aqhi.gov.hk/en/health-advice/sub-health-advice.html" lang="en">EPD precautionary actions</a></li>
+      </ul>
+    </section>
+  </article>
+  <script src="js/aqhi.js"></script>
+  <noscript>需要 JavaScript 才能讀取 data/aqhi.json。JavaScript is required to load the published AQHI JSON.</noscript>
+</body>
+</html>
