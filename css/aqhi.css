@@ -119,10 +119,28 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-weight: 700;
 }
 
-.refresh:hover { background: var(--teal-soft); }
+@media (hover: hover) {
+  .refresh:hover {
+    background: #0e2e2c;
+    border-color: #0e2e2c;
+  }
+}
 
-.refresh:disabled {
-  opacity: 0.65;
+.refresh:active,
+.refresh:hover:active {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: #fff;
+}
+
+.refresh:disabled,
+.refresh[aria-busy="true"],
+.refresh:disabled:hover,
+.refresh[aria-busy="true"]:hover {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: #fff;
+  opacity: 1;
   cursor: progress;
 }
 
@@ -180,6 +198,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .section-nav a:first-child { margin-left: 0; }
 
+@media (hover: hover) {
+  .section-nav a:hover {
+    background: var(--cream);
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  .section-nav a:hover .en { color: var(--teal-soft); }
+}
+
 .section-nav a.is-active,
 .section-nav a.is-active:hover {
   position: relative;
@@ -189,7 +217,18 @@ button { font: inherit; color: inherit; cursor: pointer; }
   color: var(--cream);
 }
 
-.section-nav a.is-active .en { color: #d5e4e0; }
+.section-nav a.is-active .en,
+.section-nav a.is-active:hover .en { color: #d5e4e0; }
+
+.section-nav a:active,
+.section-nav a.is-active:active {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: #fff;
+}
+
+.section-nav a:active .en,
+.section-nav a.is-active:active .en { color: #f3e6df; }
 
 .summary {
   background: var(--teal);
