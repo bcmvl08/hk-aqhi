@@ -1,5 +1,5 @@
-/* Draw the page from data/aqhi.json and data/weather.json on this origin.
-   The refresh button reloads those files. It does not call GitHub, the EPD, or the Observatory. */
+/* Draw the page. Refresh tries the Observatory and the EPD directly, then the
+   published JSON on this origin if a live fetch fails. No GitHub token. */
 
 (function () {
   "use strict";
@@ -18,12 +18,17 @@
     other: { zh: "其他", en: "Other" }
   };
 
+  var AUTO_MS = 5 * 60 * 1000;
+
   var state = {
     data: null,
     weather: null,
     selectedId: null,
     filter: "all",
-    loading: false
+    loading: false,
+    nextAt: 0,
+    painted: false,
+    motion: {}
   };
 
   var SVG_NS = "http://www.w3.org/2000/svg";
@@ -113,6 +118,42 @@
     node.textContent = text || "";
   }
 
+  function motionOff() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function markFresh(node, slot, key) {
+    var token = key == null ? "" : String(key);
+    if (state.painted && state.motion[slot] !== token && !motionOff()) node.classList.add("is-fresh");
+    state.motion[slot] = token;
+    return node;
+  }
+
+  function pad(number) {
+    return number < 10 ? "0" + number : String(number);
+  }
+
+  function paintCountdown() {
+    var node = $("countdown");
+    if (!node) return;
+    if (!state.nextAt) {
+      node.textContent = "";
+      return;
+    }
+    if (document.hidden) {
+      node.textContent = "分頁在背景，自動更新已暫停。 Auto-refresh is paused while this tab is hidden.";
+      return;
+    }
+    var left = Math.max(0, state.nextAt - Date.now());
+    var total = Math.ceil(left / 1000);
+    node.textContent = "下次自動更新 " + Math.floor(total / 60) + ":" + pad(total % 60) + " · Next auto-refresh";
+  }
+
+  function armAuto() {
+    state.nextAt = Date.now() + AUTO_MS;
+    paintCountdown();
+  }
+
   function rank(station) {
     if (!station.latest || station.latest.value == null) return -1;
     return station.latest.value;
@@ -170,60 +211,80 @@
     ));
   }
 
+  function withPublished(livePromise, path, accept) {
+    var upstream = livePromise.then(function (data) {
+      return { data: data, live: true };
+    });
+    return upstream.catch(function () {
+      return fetchJson(path).then(function (data) {
+        if (!accept(data)) throw new Error("published file is unusable");
+        return { data: data, live: false };
+      });
+    });
+  }
+
+  function sourceStatus(aqhi, weather) {
+    var aqhiOk = !!(aqhi && aqhi.data && Array.isArray(aqhi.data.stations));
+    var weatherOk = !!(weather && weather.data && weather.data.forecast && weather.data.current);
+    if (aqhiOk && weatherOk && aqhi.live && weather.live) {
+      return ["ok", "已向天文台和環保署讀取最新數據。 Live data from the Observatory and the EPD."];
+    }
+    if (aqhiOk && weatherOk && weather.live && !aqhi.live) {
+      return ["ok", "天氣：剛剛向天文台讀取。空氣質素：本站已發布的副本（環保署 XML 不讓其他網站的瀏覽器直接讀取；Actions 大約每小時更新該副本）。 Weather: live from the Observatory. AQHI: this site’s published copy, because the EPD file blocks other websites."];
+    }
+    if (aqhiOk && weatherOk && aqhi.live && !weather.live) {
+      return ["ok", "空氣質素已向環保署更新。天氣改用本站已發布的副本。 AQHI is live. Weather is this site’s published copy."];
+    }
+    if (aqhiOk && weatherOk) {
+      return ["ok", "上游讀取失敗，已改用本站已發布的空氣質素和天氣。 Live feeds failed. Showing the published copies."];
+    }
+    if (aqhiOk) return ["error", "空氣質素已載入。天氣讀取失敗，仍顯示上一次的天氣。 AQHI loaded. Weather failed; showing the last weather copy."];
+    if (weatherOk) return ["error", "天氣已載入。空氣質素讀取失敗，仍顯示上一次的指數。 Weather loaded. AQHI failed; showing the last AQHI copy."];
+    return ["error", "讀取失敗。請再按「立即更新」。 Could not load live or published data."];
+  }
+
   function refresh() {
     if (state.loading) return;
     state.loading = true;
     var button = $("refresh");
-    var previous = state.data && state.data.reportTime;
-    var previousWeather = state.weather && state.weather.current && state.weather.current.updateTime;
+    var hadAqhi = !!state.data;
+    var hadWeather = !!state.weather;
     button.disabled = true;
     button.setAttribute("aria-busy", "true");
     setStatus("loading", "更新中… Refreshing…");
+    var live = rootUpstream();
     Promise.allSettled([
-      fetchJson("data/aqhi.json"),
-      fetchJson("data/weather.json")
+      withPublished(live.fetchAqhi(), "data/aqhi.json", function (data) { return data && Array.isArray(data.stations); }),
+      withPublished(live.fetchWeather(), "data/weather.json", function (data) { return data && data.forecast && data.current; })
     ]).then(function (results) {
       var aqhi = results[0].status === "fulfilled" ? results[0].value : null;
       var weather = results[1].status === "fulfilled" ? results[1].value : null;
-      var aqhiOk = !!(aqhi && Array.isArray(aqhi.stations));
-      var weatherOk = !!(weather && weather.forecast && weather.current);
-      var hadAqhi = !!state.data;
-      var hadWeather = !!state.weather;
-      if (aqhiOk) applyData(aqhi);
+      if (aqhi) applyData(aqhi.data);
       else if (!hadAqhi) showAqhiError();
-      if (weatherOk) {
-        state.weather = weather;
-        renderWeather(weather);
+      if (weather) {
+        state.weather = weather.data;
+        renderWeather(weather.data);
       } else if (!hadWeather) showWeatherError();
-
-      if (!hadAqhi && !hadWeather) {
-        if (aqhiOk && weatherOk) setStatus("", "");
-        else if (!aqhiOk && !weatherOk) setStatus("error", "讀取失敗。請再按「立即更新」。 Could not load the published data.");
-        else if (!weatherOk) setStatus("error", "空氣質素已載入。天氣讀取失敗。 AQHI loaded. Weather did not.");
-        else setStatus("error", "天氣已載入。空氣質素讀取失敗。 Weather loaded. AQHI did not.");
+      if (aqhi || weather) state.painted = true;
+      var status = sourceStatus(aqhi, weather);
+      if (!aqhi && !weather && (hadAqhi || hadWeather)) {
+        setStatus("error", "讀取失敗，仍顯示上一次成功的數據。 Could not reload. Showing the last successful copy.");
         return;
       }
-      if (aqhiOk && weatherOk) {
-        var sameAqhi = previous && previous === aqhi.reportTime;
-        var nextWeather = weather.current && weather.current.updateTime;
-        var sameWeather = previousWeather && previousWeather === nextWeather;
-        if (sameAqhi && sameWeather) {
-          setStatus("ok", "已重新載入。空氣質素和天氣的更新時間與剛才相同。 Reloaded. AQHI and weather times are unchanged.");
-        } else {
-          setStatus("ok", "已重新載入本站的空氣質素和天氣。 Reloaded the published AQHI and weather.");
-        }
-      } else if (aqhiOk) {
-        setStatus("error", "空氣質素已重新載入。天氣讀取失敗，仍顯示上一次的天氣。 AQHI reloaded. Weather failed; showing the last weather copy.");
-      } else if (weatherOk) {
-        setStatus("error", "天氣已重新載入。空氣質素讀取失敗，仍顯示上一次的指數。 Weather reloaded. AQHI failed; showing the last AQHI copy.");
-      } else if (hadAqhi || hadWeather) {
-        setStatus("error", "讀取失敗，仍顯示上一次成功的數據。 Could not reload. Showing the last successful copy.");
-      }
+      setStatus(status[0], status[1]);
     }).finally(function () {
       state.loading = false;
       button.disabled = false;
       button.removeAttribute("aria-busy");
+      armAuto();
     });
+  }
+
+  function rootUpstream() {
+    return window.HkUpstream || {
+      fetchAqhi: function () { return Promise.reject(new Error("no parser")); },
+      fetchWeather: function () { return Promise.reject(new Error("no parser")); }
+    };
   }
 
   function badge(aqhi, band, large) {
@@ -283,6 +344,7 @@
     figure.appendChild(label);
     var heroBadge = badge(leader ? leader.latest.aqhi : "—", leaderBand, true);
     heroBadge.classList.add("rate-num");
+    markFresh(heroBadge, "aqhi", leader && leader.latest ? leader.latest.aqhi : "");
     figure.appendChild(heroBadge);
     var bandLine = el("p", "rate-band");
     if (leader && leaderLabel) {
@@ -740,6 +802,50 @@
     return node;
   }
 
+  function bannerLevel(warnings) {
+    var rank = { alert: 1, moderate: 2, high: 3, serious: 4 };
+    var best = "alert";
+    warnings.forEach(function (warning) {
+      if ((rank[warning.level] || 1) > (rank[best] || 1)) best = warning.level || "alert";
+    });
+    return best;
+  }
+
+  function renderWarnBanner(warnings) {
+    var banner = $("warn-banner");
+    if (!banner) return;
+    banner.replaceChildren();
+    if (!warnings.length) {
+      banner.hidden = true;
+      banner.className = "warn-banner";
+      return;
+    }
+    var level = bannerLevel(warnings);
+    banner.hidden = false;
+    banner.className = "warn-banner level-" + level + (motionOff() ? "" : " is-live");
+    var title = el("p", "warn-banner-title", "天文台警告摘要");
+    title.appendChild(document.createTextNode(" "));
+    title.appendChild(el("span", "en", "Observatory warning summary"));
+    banner.appendChild(title);
+    warnings.forEach(function (warning) {
+      var line = el("p", "warn-banner-name");
+      line.appendChild(document.createTextNode(warning.nameZh || warning.code || ""));
+      if (warning.nameEn) {
+        line.appendChild(document.createTextNode(" "));
+        line.appendChild(el("span", "en", warning.nameEn));
+      }
+      banner.appendChild(line);
+    });
+    var note = el("p", "warn-banner-note");
+    note.appendChild(document.createTextNode("這是警告摘要的轉載，不是官方警報工具。請以 "));
+    var link = el("a", null, "香港天文台");
+    link.href = "https://www.hko.gov.hk/";
+    note.appendChild(link);
+    note.appendChild(document.createTextNode(" 原文為準。"));
+    note.appendChild(el("span", "en", " This repeats the summary. It is not an official alert tool."));
+    banner.appendChild(note);
+  }
+
   function renderWeather(data) {
     var mount = $("weather-mount");
     if (!mount) return;
@@ -748,6 +854,7 @@
     var forecast = data.forecast || {};
     setTime("weather-time", current.updateTime || forecast.updateTime);
     setTime("weather-fetched", data.fetchedAt);
+    renderWarnBanner(data.warnings || []);
 
     var warnings = el("div", "warn-row");
     warnings.setAttribute("role", "region");
@@ -770,9 +877,10 @@
 
     var now = el("div", "wx-now");
     var figure = el("div", "wx-figure");
-    figure.appendChild(weatherGlyph(current.icon));
+    figure.appendChild(markFresh(weatherGlyph(current.icon), "icon", current.icon));
     if (current.temperature && current.temperature.value != null) {
       var temp = el("p", "temp-num", String(current.temperature.value) + "°");
+      markFresh(temp, "temp", current.temperature.value);
       figure.appendChild(temp);
       var where = el("p", "wx-place");
       where.appendChild(placeLine(current.temperature.placeZh, current.temperature.placeEn));
@@ -955,6 +1063,23 @@
       queueSpy();
     });
     window.addEventListener("resize", queueSpy);
+    window.setInterval(function () {
+      if (state.loading) return;
+      if (document.hidden) {
+        paintCountdown();
+        return;
+      }
+      if (state.nextAt && Date.now() >= state.nextAt) refresh();
+      else paintCountdown();
+    }, 1000);
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden || state.loading) {
+        paintCountdown();
+        return;
+      }
+      if (state.nextAt && Date.now() >= state.nextAt) refresh();
+      else paintCountdown();
+    });
   }
 
   bind();

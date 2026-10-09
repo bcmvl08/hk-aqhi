@@ -153,6 +153,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .status[data-state="ok"] { color: var(--win); }
 .status[data-state="error"] { color: var(--loss); }
 
+.countdown {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
 .tip {
   margin: 0.75rem 0 0;
   color: var(--muted);
@@ -811,6 +817,52 @@ tr.is-selected td { background: #fff; box-shadow: inset 3px 0 0 var(--teal); }
   .wx-now { grid-template-columns: 1fr; }
 }
 
+.warn-banner {
+  margin: 0;
+  padding: 0.9rem 1.75rem 1rem;
+  background: #e40012;
+  color: #fff;
+}
+
+.warn-banner[hidden] { display: none; }
+
+.warn-banner p { margin: 0.15rem 0; }
+
+.warn-banner a { color: inherit; }
+
+.warn-banner-title { font-weight: 700; letter-spacing: 0.04em; }
+
+.warn-banner-name {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+.warn-banner-note { font-size: 0.88rem; font-weight: 500; }
+
+.warn-banner.level-serious { background: #231816; }
+.warn-banner.level-high { background: #e40012; }
+.warn-banner.level-moderate { background: #f5aa00; color: #1c1915; }
+.warn-banner.level-alert { background: var(--teal); }
+
+.warn-banner.is-live {
+  animation: warn-pulse 2.2s ease-in-out infinite;
+}
+
+.is-fresh { animation: figure-in 0.55s ease; }
+
+@keyframes figure-in {
+  from { opacity: 0.2; transform: translateY(0.4rem); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes warn-pulse {
+  0%, 100% { box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0); }
+  50% { box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.4); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .is-fresh,
+  .warn-banner.is-live { animation: none; }
 }
