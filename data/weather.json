@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "provider": "Hong Kong Observatory",
   "timezone": "Asia/Hong_Kong",
-  "fetchedAt": "2026-10-10T08:48:31+08:00",
+  "fetchedAt": "2026-10-10T09:37:33+08:00",
   "sources": {
     "current": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc",
     "warnings": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc",
     "forecast": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc"
   },
   "current": {
-    "updateTime": "2026-10-10T08:02:00+08:00",
+    "updateTime": "2026-10-10T09:02:00+08:00",
     "icon": 51,
     "iconZh": "間有陽光",
     "iconEn": "Sunny Periods",
@@ -18,20 +18,20 @@
       "placeEn": "Hong Kong Observatory",
       "value": 26,
       "unit": "C",
-      "time": "2026-10-10T08:00:00+08:00",
-      "min": 23,
-      "max": 27
+      "time": "2026-10-10T09:00:00+08:00",
+      "min": 25,
+      "max": 29
     },
     "humidity": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 78,
+      "value": 74,
       "unit": "percent",
-      "time": "2026-10-10T08:00:00+08:00"
+      "time": "2026-10-10T09:00:00+08:00"
     },
     "rainfall": {
-      "startTime": "2026-10-10T06:45:00+08:00",
-      "endTime": "2026-10-10T07:45:00+08:00",
+      "startTime": "2026-10-10T07:45:00+08:00",
+      "endTime": "2026-10-10T08:45:00+08:00",
       "unit": "mm",
       "max": 0,
       "districtCount": 18,
@@ -40,7 +40,7 @@
     "uv": {
       "placeZh": "京士柏",
       "placeEn": "King's Park",
-      "value": 0.4,
+      "value": 2,
       "descZh": "低",
       "descEn": "low",
       "recordDescZh": "過去一小時",
