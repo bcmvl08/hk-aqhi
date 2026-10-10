@@ -181,10 +181,19 @@ class PageContractTests(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("workflow_dispatch:", workflow)
-        self.assertIn("cron:", workflow)
-        self.assertIn("contents: write", workflow)
+        self.assertIn('cron: "20 * * * *"', workflow)
         self.assertIn("fetch_aqhi.py", workflow)
         self.assertIn("data/aqhi.json", workflow)
+        # Branch Pages does not use a deployment token.
+        self.assertNotIn("pages:", workflow)
+        self.assertNotIn("id-token:", workflow)
+        header, jobs = workflow.split("\njobs:\n", 1)
+        self.assertIn("permissions:\n  contents: read\n", header)
+        self.assertNotIn("contents: write", header)
+        test_job, update_job = jobs.split("\n  update:\n", 1)
+        self.assertIn("contents: read", test_job)
+        self.assertNotIn("contents: write", test_job)
+        self.assertIn("permissions:\n      contents: write\n", update_job)
 
 
 if __name__ == "__main__":
