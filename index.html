@@ -3,146 +3,171 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self' https://data.weather.gov.hk https://www.aqhi.gov.hk; img-src 'self'; font-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com; script-src 'self'; connect-src 'self' https://data.weather.gov.hk https://www.aqhi.gov.hk https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self'; font-src https://fonts.gstatic.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
   <title>香港空氣質素與天氣</title>
   <meta name="description" content="環境保護署過去 24 小時空氣質素健康指數，以及香港天文台的現況、警告和九天預報。AQHI plus the Observatory’s current weather, warnings, and 9-day forecast.">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F0F7FC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
   <link rel="stylesheet" href="css/aqhi.css">
 </head>
 <body>
-  <a class="skip" href="#weather">跳至天氣</a>
-  <article class="sheet">
+  <a class="skip" href="#summary">跳至現況</a>
+  <noscript><p class="noscript">需要 JavaScript 才能讀取 data/aqhi.json 和 data/weather.json。JavaScript is required to load the published JSON.</p></noscript>
+  <article class="page">
     <header class="mast">
-      <p class="kicker">環境保護署 · 香港天文台</p>
+      <div class="mast-row">
+        <p class="kicker">環境保護署 · 香港天文台</p>
+        <button type="button" class="refresh" id="refresh">立即更新 / Refresh</button>
+      </div>
       <h1>香港空氣質素與天氣</h1>
       <p class="subtitle" lang="en">Air Quality Health Index, plus the Observatory’s current weather, warnings, and 9-day forecast.</p>
-      <p class="updated">最後更新 <span class="en" lang="en">Last updated</span>：<strong><time id="updated-time">—</time></strong>（香港時間 <span lang="en">HKT</span>）</p>
-      <p class="fetched">報告組建 <span class="en" lang="en">Report built</span> <time id="report-time">—</time> · 本站擷取 <span class="en" lang="en">Site copy</span> <time id="fetched-time">—</time></p>
-      <div class="actions">
-        <button type="button" class="refresh" id="refresh">立即更新 / Refresh</button>
-        <p class="status" id="status" role="status" aria-live="polite"></p>
-      </div>
-      <p class="countdown" id="countdown"></p>
-      <p class="tip">「立即更新」會在瀏覽器直接向香港天文台讀取現況、警告和九天預報，也會嘗試讀取環保署的空氣質素 XML。天文台允許跨站讀取。環保署的 XML 只允許自己的網站，所以失敗時改用本站已發布的 <code>data/aqhi.json</code>，並在狀態列寫明。頁面大約每 5 分鐘再試一次；分頁在背景時暫停。本頁沒有 GitHub 權杖，也不能啟動工作流程。Actions 仍大約每小時把兩份 JSON 寫進版本庫，當作備用；要立刻重抓備用檔，到 <a href="https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml">Actions 的 Update AQHI and weather</a> 按 <span lang="en">Run workflow</span>。<span lang="en">Refresh asks the Observatory and the EPD from the browser. Observatory feeds allow it. The EPD file blocks other websites, so AQHI then falls back to the published data/aqhi.json and the status says so. The page tries again about every 5 minutes and pauses while the tab is hidden. Actions still commits both JSON files about hourly as a cache.</span></p>
+      <p class="updated">最後更新<span class="en" lang="en"> Last updated</span>：<strong><time id="updated-time">—</time></strong>（香港時間 <span lang="en">HKT</span>）</p>
     </header>
 
-    <nav class="section-nav" aria-label="頁內">
-      <a href="#weather" class="is-active" aria-current="location">天氣 <span class="en" lang="en">Weather</span></a>
-      <a href="#summary">概況 <span class="en" lang="en">AQHI</span></a>
-      <a href="#stations">監測站 <span class="en" lang="en">Stations</span></a>
-      <a href="#trend">走勢 <span class="en" lang="en">Trend</span></a>
-      <a href="#daily">最高 <span class="en" lang="en">Max</span></a>
-      <a href="#about">說明 <span class="en" lang="en">Notes</span></a>
-    </nav>
-
+    <div class="sticky-stack">
+      <nav class="section-nav" aria-label="頁內">
+        <p class="nav-live" id="nav-live" aria-hidden="true"></p>
+        <a href="#summary" class="is-active" aria-current="location">概況 <span class="en" lang="en">AQHI</span></a>
+        <a href="#weather">天氣 <span class="en" lang="en">Weather</span></a>
+        <a href="#stations">監測站 <span class="en" lang="en">Stations</span></a>
+        <a href="#trend">走勢 <span class="en" lang="en">Trend</span></a>
+        <a href="#daily">最高 <span class="en" lang="en">Max</span></a>
+        <a href="#about">說明 <span class="en" lang="en">Notes</span></a>
+      </nav>
+    </div>
     <div id="warn-banner" class="warn-banner" hidden></div>
 
-    <section id="weather" aria-labelledby="weather-title">
-      <h2 id="weather-title">天氣 <span class="en-title" lang="en">Hong Kong Observatory</span></h2>
-      <p class="section-lead">現況、生效警告和九天預報。這不是官方警報工具。請以 <a href="https://www.hko.gov.hk/">香港天文台</a> 原文為準。自動更新大約每 5 分鐘一次，分頁在背景時會暫停。<span lang="en">Not an official alert tool. Auto-refresh is about every 5 minutes and pauses while the tab is hidden.</span></p>
-      <p class="fetched">天文台更新 <span class="en" lang="en">Observatory update</span> <time id="weather-time">—</time> · 本站擷取 <span class="en" lang="en">Site copy</span> <time id="weather-fetched">—</time></p>
-      <div id="weather-mount">
-        <p class="empty">正在讀取天氣… <span lang="en">Loading the published weather…</span></p>
-      </div>
-    </section>
+    <main id="main">
+      <div class="hero-grid">
+        <section class="summary panel" id="summary" tabindex="-1" aria-labelledby="summary-title">
+          <h2 id="summary-title">空氣質素健康指數 <span class="en-title" lang="en">Current AQHI</span></h2>
+          <div id="summary-mount">
+            <p class="summary-loading">正在讀取本站數據… <span lang="en">Loading the published data…</span></p>
+          </div>
+        </section>
 
-    <section class="summary" id="summary" aria-labelledby="summary-title">
-      <h2 id="summary-title" class="visually-hidden">概況</h2>
-      <div id="summary-mount">
-        <p class="summary-loading">正在讀取本站數據… <span lang="en">Loading the published data…</span></p>
+        <section class="panel" id="weather" aria-labelledby="weather-title">
+          <h2 id="weather-title">天氣 <span class="en-title" lang="en">Hong Kong Observatory</span></h2>
+          <div id="weather-mount">
+            <p class="empty">正在讀取天氣… <span lang="en">Loading the published weather…</span></p>
+          </div>
+          <p class="fetched">天文台更新 <span class="en" lang="en">Observatory update</span> <time id="weather-time">—</time> · 本站擷取 <span class="en" lang="en">Site copy</span> <time id="weather-fetched">—</time></p>
+        </section>
       </div>
-    </section>
 
-    <section id="stations" aria-labelledby="stations-title">
-      <h2 id="stations-title">各監測站最新讀數 <span class="en-title" lang="en">Latest reading at each station</span></h2>
-      <p class="section-lead">每張卡是一個監測站。顏色跟環保署的健康風險級別。點卡可看 24 小時走勢。路邊站適合長時間留在繁忙街道的人；多數時間在一般地區，看一般監測站即可。</p>
-      <div class="tool-row">
-        <span class="tool-label" id="filter-label">範圍</span>
-        <div class="seg" role="group" aria-labelledby="filter-label">
-          <button type="button" data-filter="all" aria-pressed="true">全部 <span class="en" lang="en">All</span><span data-count="all"></span></button>
-          <button type="button" data-filter="general" aria-pressed="false">一般 <span class="en" lang="en">General</span><span data-count="general"></span></button>
-          <button type="button" data-filter="roadside" aria-pressed="false">路邊 <span class="en" lang="en">Roadside</span><span data-count="roadside"></span></button>
+      <div class="source-note">
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <p class="countdown" id="countdown" aria-live="off"></p>
+        <p class="fetched">報告組建 <span class="en" lang="en">Report built</span> <time id="report-time">—</time> · 本站擷取 <span class="en" lang="en">Site copy</span> <time id="fetched-time">—</time></p>
+        <details class="tip">
+          <summary>關於更新 <span class="en" lang="en">About refresh</span></summary>
+          <p>「立即更新」會在瀏覽器直接向香港天文台讀取現況、警告和九天預報，也會嘗試讀取環保署的空氣質素 XML。天文台允許跨站讀取。環保署的 XML 只允許自己的網站，所以失敗時改用本站已發布的 <code>data/aqhi.json</code>，並在狀態列寫明。頁面大約每 5 分鐘再試一次；分頁在背景時暫停。本頁沒有 GitHub 權杖，也不能啟動工作流程。Actions 仍大約每小時把兩份 JSON 寫進版本庫，當作備用；要立刻重抓備用檔，到 <a href="https://github.com/bcmvl08/hk-aqhi/actions/workflows/update-aqhi.yml">Actions 的 Update AQHI and weather</a> 按 <span lang="en">Run workflow</span>。<span lang="en">Refresh asks the Observatory and the EPD from the browser. Observatory feeds allow it. The EPD file blocks other websites, so AQHI then falls back to the published data/aqhi.json and the status says so. The page tries again about every 5 minutes and pauses while the tab is hidden. Actions still commits both JSON files about hourly as a cache.</span></p>
+        </details>
+      </div>
+
+      <div class="panel forecast-panel" role="region" aria-labelledby="forecast-title">
+        <h2 id="forecast-title">九天預報 <span class="en-title" lang="en">9-day forecast</span></h2>
+        <p class="scroll-hint">左右滑動查看其餘日子 <span lang="en">Swipe sideways for the rest of the week</span></p>
+        <div id="forecast-mount">
+          <p class="empty">正在讀取預報… <span lang="en">Loading the forecast…</span></p>
         </div>
       </div>
-      <div class="station-grid" id="station-grid"></div>
-      <p class="empty" id="station-empty" hidden>這個範圍沒有監測站。</p>
-    </section>
 
-    <section id="trend" aria-labelledby="trend-title">
-      <h2 id="trend-title">二十四小時走勢 <span class="en-title" lang="en">24-hour trend</span></h2>
-      <p class="section-lead">直柱高度是該小時的空氣質素健康指數，1 至 10，10+ 畫到頂。沒有讀數的小時是短灰柱。同日有多個小時同為最高時，時間取最遲的一小時。</p>
-      <div class="chart-head">
-        <label class="station-select">監測站 <span lang="en">Station</span>
-          <select id="station-select"></select>
-        </label>
-      </div>
-      <div class="chart-layout">
-        <div class="chart-panel" id="chart-panel"></div>
-        <div class="chart-side" id="chart-side"></div>
-      </div>
-      <div class="hour-table-wrap">
-        <table class="hour-table">
-          <caption class="visually-hidden">所選監測站每小時讀數</caption>
+      <section class="panel" id="stations" aria-labelledby="stations-title">
+        <h2 id="stations-title">各監測站最新讀數 <span class="en-title" lang="en">Latest reading at each station</span></h2>
+        <p class="section-lead">每張卡是一個監測站。顏色跟環保署的健康風險級別，卡上同時寫明級別文字。點卡可看 24 小時走勢。路邊站適合長時間留在繁忙街道的人；多數時間在一般地區，看一般監測站即可。</p>
+        <div class="tool-row">
+          <span class="tool-label" id="filter-label">範圍</span>
+          <div class="seg" role="group" aria-labelledby="filter-label">
+            <button type="button" data-filter="all" aria-pressed="true">全部 <span class="en" lang="en">All</span><span data-count="all"></span></button>
+            <button type="button" data-filter="general" aria-pressed="false">一般 <span class="en" lang="en">General</span><span data-count="general"></span></button>
+            <button type="button" data-filter="roadside" aria-pressed="false">路邊 <span class="en" lang="en">Roadside</span><span data-count="roadside"></span></button>
+          </div>
+        </div>
+        <div class="station-grid" id="station-grid"></div>
+        <p class="empty" id="station-empty" hidden>這個範圍沒有監測站。</p>
+      </section>
+
+      <section class="panel" id="trend" aria-labelledby="trend-title">
+        <h2 id="trend-title">二十四小時走勢 <span class="en-title" lang="en">24-hour trend</span></h2>
+        <p class="section-lead">直柱高度是該小時的空氣質素健康指數，1 至 10，10+ 畫到頂。沒有讀數的小時是短灰柱。同日有多個小時同為最高時，時間取最遲的一小時。手機上圖表可左右滑動；下方表格列出同一組數字。</p>
+        <div class="chart-head">
+          <label class="station-select">監測站 <span lang="en">Station</span>
+            <select id="station-select"></select>
+          </label>
+        </div>
+        <div class="chart-layout">
+          <div class="chart-panel" id="chart-panel" tabindex="0" aria-label="二十四小時圖表，可左右滑動"></div>
+          <div class="chart-side" id="chart-side"></div>
+        </div>
+        <div class="hour-table-wrap">
+          <table class="hour-table">
+            <caption class="visually-hidden">所選監測站每小時讀數</caption>
+            <thead>
+              <tr>
+                <th scope="col">時間 <span lang="en">Time</span></th>
+                <th scope="col">指數 <span lang="en">AQHI</span></th>
+                <th scope="col">級別 <span lang="en">Band</span></th>
+              </tr>
+            </thead>
+            <tbody id="hour-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="daily" aria-labelledby="daily-title">
+        <h2 id="daily-title">每日最高與備註 <span class="en-title" lang="en">Daily maximum and notes</span></h2>
+        <p class="section-lead">過去約 24 小時通常跨兩日（香港時間）。最高是該日有讀數的小時之中最大的指數。</p>
+        <div class="hour-table-wrap">
+          <table class="max-table">
+            <caption class="visually-hidden">各站每日最高</caption>
+            <thead id="daily-head"></thead>
+            <tbody id="daily-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="about" aria-labelledby="about-title">
+        <h2 id="about-title">說明 <span class="en-title" lang="en">Notes</span></h2>
+        <p class="section-lead">現況、生效警告和九天預報。這不是官方警報工具。請以 <a href="https://www.hko.gov.hk/">香港天文台</a> 原文為準。自動更新大約每 5 分鐘一次，分頁在背景時會暫停。<span lang="en">Not an official alert tool. Auto-refresh is about every 5 minutes and pauses while the tab is hidden.</span></p>
+        <table class="scale">
+          <caption class="visually-hidden">健康風險級別</caption>
           <thead>
             <tr>
-              <th>時間 <span lang="en">Time</span></th>
-              <th>指數 <span lang="en">AQHI</span></th>
-              <th>級別 <span lang="en">Band</span></th>
+              <th scope="col">級別</th>
+              <th scope="col" lang="en">Band</th>
+              <th scope="col">指數</th>
             </tr>
           </thead>
-          <tbody id="hour-body"></tbody>
+          <tbody>
+            <tr><td><span class="badge badge-low">低</span></td><td lang="en">Low</td><td>1–3</td></tr>
+            <tr><td><span class="badge badge-moderate">中</span></td><td lang="en">Moderate</td><td>4–6</td></tr>
+            <tr><td><span class="badge badge-high">高</span></td><td lang="en">High</td><td>7</td></tr>
+            <tr><td><span class="badge badge-very-high">甚高</span></td><td lang="en">Very High</td><td>8–10</td></tr>
+            <tr><td><span class="badge badge-serious">嚴重</span></td><td lang="en">Serious</td><td>10+</td></tr>
+          </tbody>
         </table>
-      </div>
-    </section>
-
-    <section id="daily" aria-labelledby="daily-title">
-      <h2 id="daily-title">每日最高與備註 <span class="en-title" lang="en">Daily maximum and notes</span></h2>
-      <p class="section-lead">過去約 24 小時通常跨兩日（香港時間）。最高是該日有讀數的小時之中最大的指數。</p>
-      <div class="hour-table-wrap">
-        <table class="max-table">
-          <caption class="visually-hidden">各站每日最高</caption>
-          <thead id="daily-head"></thead>
-          <tbody id="daily-body"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title">說明 <span class="en-title" lang="en">Notes</span></h2>
-      <table class="scale">
-        <caption class="visually-hidden">健康風險級別</caption>
-        <thead>
-          <tr>
-            <th>級別</th>
-            <th lang="en">Band</th>
-            <th>指數</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><span class="badge badge-low">低</span></td><td lang="en">Low</td><td>1–3</td></tr>
-          <tr><td><span class="badge badge-moderate">中</span></td><td lang="en">Moderate</td><td>4–6</td></tr>
-          <tr><td><span class="badge badge-high">高</span></td><td lang="en">High</td><td>7</td></tr>
-          <tr><td><span class="badge badge-very-high">甚高</span></td><td lang="en">Very High</td><td>8–10</td></tr>
-          <tr><td><span class="badge badge-serious">嚴重</span></td><td lang="en">Serious</td><td>10+</td></tr>
-        </tbody>
-      </table>
-      <div class="disclaimer">
-        <p>本頁轉載環境保護署公布的空氣質素健康指數，以及香港天文台的天氣和警告，方便放在一起看。這不是醫療建議，也不是官方警報工具。GitHub Actions 大約每小時才更新，數字和警告都可能遲過官方網站。身體不適請諮詢醫護人員。警告和預防建議以天文台、環保署原文為準。</p>
-        <p lang="en">This page republishes the Environmental Protection Department’s Air Quality Health Index and the Hong Kong Observatory’s weather and warnings. It is not medical advice and it is not an official alert tool. GitHub Actions refreshes about once an hour, so figures and warnings can lag the official sites. If you feel unwell, talk to a clinician.</p>
-      </div>
-      <ul class="credits">
-        <li>天氣 <span lang="en">Weather</span>：<a href="https://www.hko.gov.hk/">香港天文台 Hong Kong Observatory</a></li>
-        <li>天文台數據 <span lang="en">Observatory feeds</span>：<a href="https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&amp;lang=tc">現況</a> · <a href="https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&amp;lang=tc">警告</a> · <a href="https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&amp;lang=tc">九天預報</a></li>
-        <li>資料集 <span lang="en">Datasets</span>：<a href="https://data.gov.hk/tc-data/dataset/hk-hko-rss-current-weather-report">本港天氣報告</a> · <a href="https://data.gov.hk/tc-data/dataset/hk-hko-rss-weather-warning-summary">天氣警告</a> · <a href="https://data.gov.hk/tc-data/dataset/hk-hko-rss-9-day-weather-forecast">九天天氣預報</a></li>
-        <li>空氣質素 <span lang="en">Air quality</span>：<a href="https://www.aqhi.gov.hk/">環境保護署 Environmental Protection Department</a></li>
-        <li>即時 XML <span lang="en">Live XML</span>：<a href="https://www.aqhi.gov.hk/epd/ddata/html/out/24aqhi_Eng.xml">24aqhi_Eng.xml</a></li>
-        <li>資料集 <span lang="en">Dataset</span>：<a href="https://data.gov.hk/tc-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations">data.gov.hk（繁中）</a> · <a href="https://data.gov.hk/en-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations" lang="en">English</a></li>
-        <li>健康建議 <span lang="en">Health advice</span>：<a href="https://www.aqhi.gov.hk/tc/health-advice/sub-health-advice.html">環保署預防措施</a> · <a href="https://www.aqhi.gov.hk/en/health-advice/sub-health-advice.html" lang="en">EPD precautionary actions</a></li>
-      </ul>
-    </section>
+        <div class="disclaimer">
+          <p>本頁轉載環境保護署公布的空氣質素健康指數，以及香港天文台的天氣和警告，方便放在一起看。這不是醫療建議，也不是官方警報工具。GitHub Actions 大約每小時才更新，數字和警告都可能遲過官方網站。身體不適請諮詢醫護人員。警告和預防建議以天文台、環保署原文為準。</p>
+          <p lang="en">This page republishes the Environmental Protection Department’s Air Quality Health Index and the Hong Kong Observatory’s weather and warnings. It is not medical advice and it is not an official alert tool. GitHub Actions refreshes about once an hour, so figures and warnings can lag the official sites. If you feel unwell, talk to a clinician.</p>
+        </div>
+        <ul class="credits">
+          <li>天氣 <span lang="en">Weather</span>：<a href="https://www.hko.gov.hk/">香港天文台 Hong Kong Observatory</a></li>
+          <li>天文台數據 <span lang="en">Observatory feeds</span>：<a href="https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&amp;lang=tc">現況</a> · <a href="https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&amp;lang=tc">警告</a> · <a href="https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&amp;lang=tc">九天預報</a></li>
+          <li>資料集 <span lang="en">Datasets</span>：<a href="https://data.gov.hk/tc-data/dataset/hk-hko-rss-current-weather-report">本港天氣報告</a> · <a href="https://data.gov.hk/tc-data/dataset/hk-hko-rss-weather-warning-summary">天氣警告</a> · <a href="https://data.gov.hk/tc-data/dataset/hk-hko-rss-9-day-weather-forecast">九天天氣預報</a></li>
+          <li>空氣質素 <span lang="en">Air quality</span>：<a href="https://www.aqhi.gov.hk/">環境保護署 Environmental Protection Department</a></li>
+          <li>即時 XML <span lang="en">Live XML</span>：<a href="https://www.aqhi.gov.hk/epd/ddata/html/out/24aqhi_Eng.xml">24aqhi_Eng.xml</a></li>
+          <li>資料集 <span lang="en">Dataset</span>：<a href="https://data.gov.hk/tc-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations">data.gov.hk（繁中）</a> · <a href="https://data.gov.hk/en-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations" lang="en">English</a></li>
+          <li>健康建議 <span lang="en">Health advice</span>：<a href="https://www.aqhi.gov.hk/tc/health-advice/sub-health-advice.html">環保署預防措施</a> · <a href="https://www.aqhi.gov.hk/en/health-advice/sub-health-advice.html" lang="en">EPD precautionary actions</a></li>
+        </ul>
+      </section>
+    </main>
   </article>
   <script src="js/upstream.js"></script>
   <script src="js/aqhi.js"></script>
-  <noscript>需要 JavaScript 才能讀取 data/aqhi.json 和 data/weather.json。JavaScript is required to load the published JSON.</noscript>
 </body>
 </html>

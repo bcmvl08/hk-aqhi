@@ -195,7 +195,7 @@
     mount.replaceChildren();
     mount.appendChild(el(
       "p",
-      "summary-loading",
+      "summary-loading is-error",
       "空氣質素讀取失敗。請按「立即更新」再試。 Could not load data/aqhi.json."
     ));
   }
@@ -206,9 +206,18 @@
     mount.replaceChildren();
     mount.appendChild(el(
       "p",
-      "empty",
+      "empty is-error",
       "天氣讀取失敗。請再按「立即更新」。 Could not load data/weather.json."
     ));
+    var forecast = $("forecast-mount");
+    if (forecast) {
+      forecast.replaceChildren();
+      forecast.appendChild(el(
+        "p",
+        "empty is-error",
+        "預報未能載入。 Could not load the forecast."
+      ));
+    }
   }
 
   function withPublished(livePromise, path, accept) {
@@ -249,6 +258,8 @@
     var button = $("refresh");
     var hadAqhi = !!state.data;
     var hadWeather = !!state.weather;
+    var main = document.querySelector("main");
+    if (main) main.setAttribute("aria-busy", "true");
     button.disabled = true;
     button.setAttribute("aria-busy", "true");
     setStatus("loading", "更新中… Refreshing…");
@@ -276,6 +287,7 @@
       state.loading = false;
       button.disabled = false;
       button.removeAttribute("aria-busy");
+      if (main) main.removeAttribute("aria-busy");
       armAuto();
     });
   }
@@ -401,6 +413,7 @@
     var stats = el("ul", "stats");
     BANDS.forEach(function (band) {
       var item = el("li");
+      item.dataset.band = band.id;
       item.appendChild(el("span", "n", String(counts[band.id])));
       var caption = el("span", "l");
       caption.appendChild(document.createTextNode(band.zh + " "));
@@ -575,15 +588,13 @@
         x2: width - right,
         y1: y.toFixed(1),
         y2: y.toFixed(1),
-        stroke: "#e3dacb",
-        "stroke-width": "1"
+        class: "chart-grid"
       }));
       var text = svgEl("text", {
         x: left - 8,
         y: (y + 4).toFixed(1),
         "text-anchor": "end",
-        fill: "#5f584e",
-        "font-size": "12"
+        class: "chart-label"
       });
       text.textContent = tick === 11 ? "10+" : String(tick);
       svg.appendChild(text);
@@ -616,8 +627,7 @@
           x: (left + index * slot + slot / 2).toFixed(2),
           y: top + plotH + 18,
           "text-anchor": "middle",
-          fill: "#5f584e",
-          "font-size": "11"
+          class: "chart-label"
         });
         var stamp = hourText(hour.time);
         if (index === 0 || stamp === "00:00") {
@@ -692,6 +702,29 @@
     });
   }
 
+  function paintNavLive() {
+    var node = $("nav-live");
+    if (!node) return;
+    var parts = [];
+    if (state.data && state.data.stations) {
+      var bestValue = -1;
+      var leader = null;
+      state.data.stations.forEach(function (station) {
+        if (rank(station) > bestValue) {
+          bestValue = rank(station);
+          leader = station;
+        }
+      });
+      if (leader && leader.latest && leader.latest.aqhi) {
+        var label = bandLabel(leader.latest.band);
+        parts.push("AQHI " + leader.latest.aqhi + (label ? " " + label.zh : ""));
+      }
+    }
+    var temp = state.weather && state.weather.current && state.weather.current.temperature;
+    if (temp && temp.value != null) parts.push(String(temp.value) + "°");
+    node.textContent = parts.join(" · ");
+  }
+
   function render(data) {
     setTime("updated-time", latestObservation(data));
     setTime("report-time", data.reportTime);
@@ -701,6 +734,7 @@
     renderSelect(data);
     renderChart(data);
     renderDaily(data);
+    paintNavLive();
   }
 
   function iconKind(code) {
@@ -726,9 +760,10 @@
   function weatherGlyph(icon) {
     var kind = iconKind(icon);
     var svg = svgEl("svg", { viewBox: "0 0 32 32", class: "wx-glyph", "aria-hidden": "true" });
-    var ink = "#5f584e";
-    var sun = "#c47d08";
-    var rain = "#1d5550";
+    var ink = "currentColor";
+    var sun = "var(--glyph-sun)";
+    var rain = "var(--glyph-rain)";
+    var cloud = "var(--surface)";
     if (kind === "sun" || kind === "sun-rain" || kind === "hot") {
       addShape(svg, "circle", { cx: "16", cy: kind === "sun-rain" ? "12" : "16", r: "5", fill: sun });
       [[16, 2, 16, 5], [26, 6, 24, 8], [30, 16, 27, 16], [26, 26, 24, 24], [16, 30, 16, 27], [6, 26, 8, 24], [2, 16, 5, 16], [6, 6, 8, 8]].forEach(function (ray) {
@@ -738,9 +773,9 @@
     }
     if (kind === "cloud" || kind === "rain" || kind === "thunder" || kind === "fog" || kind === "sun-rain") {
       var y = kind === "sun-rain" ? 8 : 0;
-      addShape(svg, "circle", { cx: "13", cy: 14 + y, r: "5", fill: "#fff", stroke: ink, "stroke-width": "1.4" });
-      addShape(svg, "circle", { cx: "20", cy: 13 + y, r: "4", fill: "#fff", stroke: ink, "stroke-width": "1.4" });
-      addShape(svg, "rect", { x: "10", y: 14 + y, width: "12", height: "6", fill: "#fff" });
+      addShape(svg, "circle", { cx: "13", cy: 14 + y, r: "5", fill: cloud, stroke: ink, "stroke-width": "1.4" });
+      addShape(svg, "circle", { cx: "20", cy: 13 + y, r: "4", fill: cloud, stroke: ink, "stroke-width": "1.4" });
+      addShape(svg, "rect", { x: "10", y: 14 + y, width: "12", height: "6", fill: cloud });
     }
     if (kind === "rain" || kind === "sun-rain" || kind === "thunder") {
       [[12, 24, 10, 29], [18, 24, 16, 29], [24, 24, 22, 29]].forEach(function (drop) {
@@ -748,7 +783,7 @@
       });
     }
     if (kind === "thunder") {
-      addShape(svg, "polygon", { points: "17,16 13,22 16,22 14,28 21,20 17,20", fill: "#c47d08" });
+      addShape(svg, "polygon", { points: "17,16 13,22 16,22 14,28 21,20 17,20", fill: sun });
     }
     if (kind === "wind") {
       [[4, 12, 24, 12], [6, 17, 26, 17], [8, 22, 22, 22]].forEach(function (line) {
@@ -761,9 +796,9 @@
       });
     }
     if (kind === "cold") {
-      addShape(svg, "circle", { cx: "16", cy: "16", r: "4", fill: "none", stroke: "#1d5550", "stroke-width": "1.6" });
+      addShape(svg, "circle", { cx: "16", cy: "16", r: "4", fill: "none", stroke: rain, "stroke-width": "1.6" });
       [[16, 4, 16, 10], [16, 22, 16, 28], [4, 16, 10, 16], [22, 16, 28, 16]].forEach(function (line) {
-        addShape(svg, "line", { x1: line[0], y1: line[1], x2: line[2], y2: line[3], stroke: "#1d5550", "stroke-width": "1.4", "stroke-linecap": "round" });
+        addShape(svg, "line", { x1: line[0], y1: line[1], x2: line[2], y2: line[3], stroke: rain, "stroke-width": "1.4", "stroke-linecap": "round" });
       });
     }
     return svg;
@@ -873,8 +908,6 @@
         warnings.appendChild(chip);
       });
     }
-    mount.appendChild(warnings);
-
     var now = el("div", "wx-now");
     var figure = el("div", "wx-figure");
     figure.appendChild(markFresh(weatherGlyph(current.icon), "icon", current.icon));
@@ -936,6 +969,7 @@
     }
     now.appendChild(facts);
     mount.appendChild(now);
+    mount.appendChild(warnings);
 
     [current.messageZh, current.messageEn, current.cycloneMessageZh, current.cycloneMessageEn].forEach(function (message, index) {
       if (!message) return;
@@ -964,15 +998,23 @@
       strip.appendChild(card);
     });
     scroller.appendChild(strip);
-    mount.appendChild(scroller);
+    var forecastMount = $("forecast-mount");
+    var forecastTarget = forecastMount || mount;
+    if (forecastMount) forecastMount.replaceChildren();
+    if (!(forecast.days || []).length) {
+      forecastTarget.appendChild(el("p", "empty", "暫無九天預報。 No 9-day forecast in this copy."));
+    } else {
+      forecastTarget.appendChild(scroller);
+    }
 
     if (forecast.generalSituationZh || forecast.generalSituationEn) {
       var outlook = el("div", "outlook");
       outlook.appendChild(el("h3", null, "未來數天"));
       if (forecast.generalSituationZh) outlook.appendChild(el("p", null, forecast.generalSituationZh));
       if (forecast.generalSituationEn) outlook.appendChild(el("p", "en", forecast.generalSituationEn));
-      mount.appendChild(outlook);
+      forecastTarget.appendChild(outlook);
     }
+    paintNavLive();
   }
 
   function bind() {
