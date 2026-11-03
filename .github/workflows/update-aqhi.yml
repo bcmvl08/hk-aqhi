@@ -13,10 +13,11 @@ name: Update AQHI and weather
 
 on:
   schedule:
-    # Minute 20 of every hour. EPD usually posts the file around minute 10
-    # Hong Kong time, and Hong Kong is UTC+8 so the minute is the same.
-    # GitHub may start the job later than the cron time.
-    - cron: "20 * * * *"
+    # Minute 22 of every hour (was 20). EPD usually posts around minute 10 HKT
+    # (UTC+8, same minute on the cron). GitHub may start late.
+    # If scheduled runs stop while state stays "active", edit this cron line and
+    # use Actions → Enable workflow / Run workflow once (see docs/FORGE-SYNC.md).
+    - cron: "22 * * * *"
   workflow_dispatch:
   pull_request:
 
