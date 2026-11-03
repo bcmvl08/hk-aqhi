@@ -4,6 +4,8 @@
 
 GitHub Actions 每小時向兩個公開來源取數。空氣質素或天氣有變才把新的 JSON 推上 `main`。任一次取數失敗就停手，不 commit，上一份照舊留在網站上。GitHub Pages 由 `main` 分支的根目錄發布。
 
+**雙遠端：** 正式站 [hk-aqhi.pages.dev](https://hk-aqhi.pages.dev/) 由 **GitLab** `main` 經 Cloudflare Pages 發布，與本 GitHub 倉庫可能不同步。詳見 [`docs/FORGE-SYNC.md`](docs/FORGE-SYNC.md)。
+
 這不是官方警報工具。排程大約每小時一次，GitHub 也可能遲到，警告會遲過天文台網站。
 
 [English notes](#english)
@@ -31,7 +33,7 @@ GitHub Actions 每小時向兩個公開來源取數。空氣質素或天氣有�
 
 工作流程是 [Update AQHI and weather](.github/workflows/update-aqhi.yml)。
 
-- Cron：`20 * * * *`，每小時第 20 分。香港是 UTC+8，所以分鐘和香港時間一樣。環保署的 XML 通常在每小時約第 10 分更新，第 20 分再抓，比較容易抓到該小時的檔。天文台的現況更新更密，但本站跟著同一個小時排程走。
+- Cron：`22 * * * *`，每小時第 22 分。香港是 UTC+8，所以分鐘和香港時間一樣。環保署的 XML 通常在每小時約第 10 分更新，第 22 分再抓，比較容易抓到該小時的檔。天文台的現況更新更密，但本站跟著同一個小時排程走。
 - GitHub 的排程不保證準時，有時會遲十幾分鐘。警告因此可能遲過天文台。
 - 連續 60 日沒有任何倉庫活動時，GitHub 會暫停排程。到 Actions 手動跑一次就會恢復。
 - 空氣質素和天氣都跟上一份一樣時，不會 commit。只有其中一份有變，也會 commit。
@@ -76,6 +78,8 @@ One static page: the Environmental Protection Department’s past-24-hour Air Qu
 
 GitHub Actions fetches both public sources every hour and pushes to `main` only when AQHI or weather changed. If either fetch fails, the job stops without a commit and the last good files stay in place. GitHub Pages publishes the root of `main`.
 
+**Two remotes:** Production [hk-aqhi.pages.dev](https://hk-aqhi.pages.dev/) deploys **GitLab** `main` via Cloudflare Pages and may differ from this GitHub repo. See [`docs/FORGE-SYNC.md`](docs/FORGE-SYNC.md).
+
 This is not an official alert tool. The schedule is about hourly, and GitHub may start it late, so warnings can lag the Observatory.
 
 ### GitHub Pages
@@ -101,7 +105,7 @@ If a ruleset blocks the bot, allow `github-actions[bot]` to push. Leave Pages on
 
 Workflow: [Update AQHI and weather](.github/workflows/update-aqhi.yml).
 
-- Cron `20 * * * *` (minute 20 of every hour). Hong Kong is UTC+8, so the minute matches Hong Kong time. The EPD file usually appears around minute 10, and minute 20 is late enough to catch it. Observatory observations update more often; this site still follows the same hourly job.
+- Cron `22 * * * *` (minute 22 of every hour). Hong Kong is UTC+8, so the minute matches Hong Kong time. The EPD file usually appears around minute 10, and minute 22 is late enough to catch it. Observatory observations update more often; this site still follows the same hourly job.
 - GitHub may start the job later than the cron time, so warnings can lag the Observatory.
 - GitHub pauses scheduled workflows after 60 days without repository activity. One manual run turns them back on.
 - A commit happens when either file changed. Identical AQHI and weather produce no commit.
