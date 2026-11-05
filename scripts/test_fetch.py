@@ -181,7 +181,7 @@ class PageContractTests(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("workflow_dispatch:", workflow)
-        self.assertIn('cron: "20 * * * *"', workflow)
+        self.assertIn('cron: "22 * * * *"', workflow)
         self.assertIn("fetch_aqhi.py", workflow)
         self.assertIn("data/aqhi.json", workflow)
         # Branch Pages does not use a deployment token.
