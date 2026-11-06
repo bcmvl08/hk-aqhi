@@ -2,36 +2,36 @@
   "schemaVersion": 1,
   "provider": "Hong Kong Observatory",
   "timezone": "Asia/Hong_Kong",
-  "fetchedAt": "2026-11-07T00:00:49+08:00",
+  "fetchedAt": "2026-11-07T05:38:08+08:00",
   "sources": {
     "current": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc",
     "warnings": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc",
     "forecast": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc"
   },
   "current": {
-    "updateTime": "2026-11-06T23:02:00+08:00",
-    "icon": 60,
-    "iconZh": "多雲",
-    "iconEn": "Cloudy",
+    "updateTime": "2026-11-07T05:02:00+08:00",
+    "icon": 62,
+    "iconZh": "微雨",
+    "iconEn": "Light Rain",
     "temperature": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 27,
+      "value": 26,
       "unit": "C",
-      "time": "2026-11-06T23:00:00+08:00",
-      "min": 25,
-      "max": 28
+      "time": "2026-11-07T05:00:00+08:00",
+      "min": 24,
+      "max": 27
     },
     "humidity": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 79,
+      "value": 78,
       "unit": "percent",
-      "time": "2026-11-06T23:00:00+08:00"
+      "time": "2026-11-07T05:00:00+08:00"
     },
     "rainfall": {
-      "startTime": "2026-11-06T21:45:00+08:00",
-      "endTime": "2026-11-06T22:45:00+08:00",
+      "startTime": "2026-11-07T03:45:00+08:00",
+      "endTime": "2026-11-07T04:45:00+08:00",
       "unit": "mm",
       "max": 0,
       "districtCount": 18,
@@ -45,23 +45,23 @@
   },
   "warnings": [],
   "forecast": {
-    "updateTime": "2026-11-06T23:20:00+08:00",
-    "generalSituationZh": "一股達強風程度的東北季候風會在週末期間影響廣東沿岸。預料一道冷鋒會在星期一初時橫過華南沿岸，受相關的強烈東北季候風影響，該區北風增強，氣溫顯著下降，下週中期廣東普遍晴朗及乾燥，內陸地區早上清涼，日夜溫差較大。預料高空擾動會在下週後期為華南帶來有雨的天氣。",
-    "generalSituationEn": "A strong northeast monsoon will affect the coast of Guangdong over the weekend. A cold front is expected to move across the coast of southern China at first on Monday. Under the influence of the associated intense northeast monsoon, winds will strengthen from the north and temperatures will fall appreciably over the region. The weather will be generally fine and dry over Guangdong midweek next week. It will be cool in the morning over inland areas, and the temperature difference between day and night will be relatively large. Upper-air disturbances are expected to bring rainy weather to southern China in the latter part of next week.",
+    "updateTime": "2026-11-07T04:50:00+08:00",
+    "generalSituationZh": "一股達強風程度的東北季候風會在今明兩日影響廣東沿岸。預料一道冷鋒會在星期一初時橫過華南沿岸，受相關的強烈東北季候風影響，該區北風增強，氣溫顯著下降，下週中期廣東普遍晴朗及乾燥，內陸地區早上清涼，日夜溫差較大。預料高空擾動會在下週後期為華南帶來有雨的天氣。",
+    "generalSituationEn": "A strong northeast monsoon will affect the coast of Guangdong today and tomorrow. A cold front is expected to move across the coast of southern China at first on Monday. Under the influence of the associated intense northeast monsoon, winds will strengthen from the north and temperatures will fall appreciably over the region. The weather will be generally fine and dry over Guangdong midweek next week. It will be cool in the morning over inland areas, and the temperature difference between day and night will be relatively large. Upper-air disturbances are expected to bring rainy weather to southern China in the latter part of next week.",
     "days": [
       {
         "date": "2026-11-07",
         "weekZh": "星期六",
         "weekEn": "Saturday",
-        "weatherZh": "大致多雲。早晚有一兩陣雨。日間部分時間天色明朗。",
-        "weatherEn": "Mainly cloudy. One or two rain patches in the morning and at night. Bright periods during the day.",
+        "weatherZh": "大致多雲。早晚有一兩陣雨。日間短暫時間有陽光。",
+        "weatherEn": "Mainly cloudy. One or two rain patches in the morning and at night. Sunny intervals during the day.",
         "windZh": "東風5級，離岸及高地間中達7級。",
         "windEn": "East force 5, occasionally up to force 7 offshore and on high ground.",
-        "maxTemp": 28,
+        "maxTemp": 29,
         "minTemp": 25,
-        "icon": 62,
-        "iconZh": "微雨",
-        "iconEn": "Light Rain",
+        "icon": 54,
+        "iconZh": "短暫陽光有驟雨",
+        "iconEn": "Sunny Intervals with Showers",
         "psrZh": "低",
         "psrEn": "Low"
       },
