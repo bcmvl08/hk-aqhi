@@ -4,8 +4,8 @@
   "sourcePage": "https://data.gov.hk/tc-data/dataset/hk-epd-airteam-past24hr-aqhi-of-individual-air-quality-monitoring-stations",
   "provider": "Environmental Protection Department",
   "timezone": "Asia/Hong_Kong",
-  "reportTime": "2026-11-07T16:30:00+08:00",
-  "fetchedAt": "2026-11-07T16:57:09+08:00",
+  "reportTime": "2026-11-07T23:30:00+08:00",
+  "fetchedAt": "2026-11-07T23:46:21+08:00",
   "title": "Environmental Protection Department - AQHI",
   "stations": [
     {
@@ -15,28 +15,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -54,48 +47,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -194,6 +145,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -207,28 +200,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -246,48 +232,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -386,6 +330,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -399,30 +385,23 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-06T19:00:00+08:00",
+        "time": "2026-11-07T20:00:00+08:00",
         "aqhi": "5",
         "value": 5,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T19:00:00+08:00",
+          "date": "2026-11-07",
+          "time": "2026-11-07T20:00:00+08:00",
           "aqhi": "5",
           "value": 5,
-          "band": "moderate"
-        },
-        {
-          "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
           "band": "moderate"
         }
       ],
@@ -438,48 +417,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "5",
-          "value": 5,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -578,6 +515,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "5",
+          "value": 5,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "5",
+          "value": 5,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "5",
+          "value": 5,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -591,28 +570,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -630,48 +602,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -770,6 +700,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -783,28 +755,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -822,48 +787,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "3",
-          "value": 3,
-          "band": "low"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "3",
@@ -962,6 +885,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -975,28 +940,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1014,48 +972,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "3",
-          "value": 3,
-          "band": "low"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "3",
@@ -1154,6 +1070,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1167,28 +1125,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1206,48 +1157,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -1346,6 +1255,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1359,28 +1310,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1398,48 +1342,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "3",
-          "value": 3,
-          "band": "low"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "3",
@@ -1538,6 +1440,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1551,28 +1495,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1590,48 +1527,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "3",
-          "value": 3,
-          "band": "low"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "3",
@@ -1730,6 +1625,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1743,28 +1680,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1782,48 +1712,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -1922,6 +1810,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1935,28 +1865,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -1974,48 +1897,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "3",
-          "value": 3,
-          "band": "low"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "3",
-          "value": 3,
-          "band": "low"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "3",
-          "value": 3,
-          "band": "low"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "3",
@@ -2114,6 +1995,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2127,28 +2050,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2166,48 +2082,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -2306,6 +2180,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2319,28 +2235,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2358,48 +2267,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -2498,6 +2365,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2511,28 +2420,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2550,48 +2452,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -2690,6 +2550,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2703,28 +2605,21 @@
       "type": "general",
       "typeRaw": "General Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2742,48 +2637,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -2882,6 +2735,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2895,28 +2790,21 @@
       "type": "roadside",
       "typeRaw": "Roadside Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -2934,48 +2822,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -3074,6 +2920,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -3087,28 +2975,21 @@
       "type": "roadside",
       "typeRaw": "Roadside Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -3126,48 +3007,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -3266,6 +3105,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -3279,28 +3160,21 @@
       "type": "roadside",
       "typeRaw": "Roadside Stations",
       "latest": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "max24h": {
-        "time": "2026-11-07T16:00:00+08:00",
+        "time": "2026-11-07T23:00:00+08:00",
         "aqhi": "4",
         "value": 4,
         "band": "moderate"
       },
       "dailyMax": [
         {
-          "date": "2026-11-06",
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
           "date": "2026-11-07",
-          "time": "2026-11-07T16:00:00+08:00",
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
@@ -3318,48 +3192,6 @@
         }
       ],
       "hours": [
-        {
-          "time": "2026-11-06T17:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T18:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T19:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T20:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T21:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T22:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
-        {
-          "time": "2026-11-06T23:00:00+08:00",
-          "aqhi": "4",
-          "value": 4,
-          "band": "moderate"
-        },
         {
           "time": "2026-11-07T00:00:00+08:00",
           "aqhi": "4",
@@ -3458,6 +3290,48 @@
         },
         {
           "time": "2026-11-07T16:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T17:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T18:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T19:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T20:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T21:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T22:00:00+08:00",
+          "aqhi": "4",
+          "value": 4,
+          "band": "moderate"
+        },
+        {
+          "time": "2026-11-07T23:00:00+08:00",
           "aqhi": "4",
           "value": 4,
           "band": "moderate"
