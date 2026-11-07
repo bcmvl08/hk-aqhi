@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "provider": "Hong Kong Observatory",
   "timezone": "Asia/Hong_Kong",
-  "fetchedAt": "2026-11-07T23:46:27+08:00",
+  "fetchedAt": "2026-11-08T04:19:58+08:00",
   "sources": {
     "current": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc",
     "warnings": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc",
     "forecast": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc"
   },
   "current": {
-    "updateTime": "2026-11-07T23:02:00+08:00",
+    "updateTime": "2026-11-08T04:02:00+08:00",
     "icon": 62,
     "iconZh": "微雨",
     "iconEn": "Light Rain",
@@ -18,7 +18,7 @@
       "placeEn": "Hong Kong Observatory",
       "value": 25,
       "unit": "C",
-      "time": "2026-11-07T23:00:00+08:00",
+      "time": "2026-11-08T04:00:00+08:00",
       "min": 23,
       "max": 26
     },
@@ -27,11 +27,11 @@
       "placeEn": "Hong Kong Observatory",
       "value": 78,
       "unit": "percent",
-      "time": "2026-11-07T23:00:00+08:00"
+      "time": "2026-11-08T04:00:00+08:00"
     },
     "rainfall": {
-      "startTime": "2026-11-07T21:45:00+08:00",
-      "endTime": "2026-11-07T22:45:00+08:00",
+      "startTime": "2026-11-08T02:45:00+08:00",
+      "endTime": "2026-11-08T03:45:00+08:00",
       "unit": "mm",
       "max": 0,
       "districtCount": 18,
@@ -59,9 +59,9 @@
     }
   ],
   "forecast": {
-    "updateTime": "2026-11-07T23:20:00+08:00",
-    "generalSituationZh": "一股達強風程度的東北季候風會在明日影響廣東沿岸。預料一道冷鋒會在星期一初時橫過華南沿岸，受隨後的強烈東北季候風影響，該區北風增強，氣溫顯著下降，下週中期廣東普遍晴朗及非常乾燥，早上清涼，日夜溫差較大。預料高空擾動會在下週後期為華南帶來驟雨。",
-    "generalSituationEn": "A strong northeast monsoon will affect the coast of Guangdong tomorrow. A cold front is expected to move across the coast of southern China at first on Monday. Under the influence of the associated intense northeast monsoon, winds will strengthen from the north and temperatures will fall appreciably over the region. The weather will be generally fine and very dry over Guangdong midweek next week. It will be cool in the morning. The temperature difference between day and night will be relatively large. Upper-air disturbances are expected to bring showers to southern China in the latter part of next week.",
+    "updateTime": "2026-11-08T03:50:00+08:00",
+    "generalSituationZh": "一股達強風程度的東北季候風會在今日影響廣東沿岸。預料一道冷鋒會在明日初時橫過華南沿岸，受隨後的強烈東北季候風影響，該區北風增強，氣溫顯著下降，本週中期廣東普遍晴朗及非常乾燥，早上清涼，日夜溫差較大。預料高空擾動會在本週後期為華南帶來驟雨。此外，熱帶氣旋查帕卡會在今明兩日橫過西北太平洋，隨後轉向東北方向移動，橫過日本以南海域。",
+    "generalSituationEn": "A strong northeast monsoon will affect the coast of Guangdong today. A cold front is expected to move across the coast of southern China at first tomorrow. Under the influence of the associated intense northeast monsoon, winds will strengthen from the north and temperatures will fall appreciably over the region. The weather will be generally fine and very dry over Guangdong midweek this week. It will be cool in the morning. The temperature difference between day and night will be relatively large. Upper-air disturbances are expected to bring showers to southern China in the latter part of this week. Besides, Tropical Cyclone Cempaka will move across the western North Pacific today and tomorrow. It will then turn northeastwards and move across the seas south of Japan.",
     "days": [
       {
         "date": "2026-11-08",
@@ -72,7 +72,7 @@
         "windZh": "東至東北風4至5級，初時離岸及高地達7級。",
         "windEn": "East to northeast force 4 to 5, up to force 7 offshore and on high ground at first.",
         "maxTemp": 28,
-        "minTemp": 25,
+        "minTemp": 24,
         "icon": 53,
         "iconZh": "間有陽光幾陣驟雨",
         "iconEn": "Sunny Periods with A Few Showers",
