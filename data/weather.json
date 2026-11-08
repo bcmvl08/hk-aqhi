@@ -2,72 +2,50 @@
   "schemaVersion": 1,
   "provider": "Hong Kong Observatory",
   "timezone": "Asia/Hong_Kong",
-  "fetchedAt": "2026-11-08T14:20:41+08:00",
+  "fetchedAt": "2026-11-08T21:42:32+08:00",
   "sources": {
     "current": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc",
     "warnings": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc",
     "forecast": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc"
   },
   "current": {
-    "updateTime": "2026-11-08T14:02:00+08:00",
-    "icon": 51,
-    "iconZh": "間有陽光",
-    "iconEn": "Sunny Periods",
+    "updateTime": "2026-11-08T21:02:00+08:00",
+    "icon": 76,
+    "iconZh": "大致多雲",
+    "iconEn": "Mainly Cloudy",
     "temperature": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 27,
+      "value": 26,
       "unit": "C",
-      "time": "2026-11-08T14:00:00+08:00",
-      "min": 26,
-      "max": 29
+      "time": "2026-11-08T21:00:00+08:00",
+      "min": 24,
+      "max": 27
     },
     "humidity": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 69,
+      "value": 77,
       "unit": "percent",
-      "time": "2026-11-08T14:00:00+08:00"
+      "time": "2026-11-08T21:00:00+08:00"
     },
     "rainfall": {
-      "startTime": "2026-11-08T12:45:00+08:00",
-      "endTime": "2026-11-08T13:45:00+08:00",
+      "startTime": "2026-11-08T19:45:00+08:00",
+      "endTime": "2026-11-08T20:45:00+08:00",
       "unit": "mm",
       "max": 0,
       "districtCount": 18,
       "leaders": []
     },
-    "uv": {
-      "placeZh": "京士柏",
-      "placeEn": "King's Park",
-      "value": 3,
-      "descZh": "中等",
-      "descEn": "moderate",
-      "recordDescZh": "過去一小時",
-      "recordDescEn": "During the past hour"
-    },
-    "messageZh": "火災危險警告為黃色，表示火災危險性頗高。",
-    "messageEn": "The Fire Danger Warning is Yellow and the fire risk is high.",
+    "uv": null,
+    "messageZh": "",
+    "messageEn": "",
     "cycloneMessageZh": "",
     "cycloneMessageEn": ""
   },
-  "warnings": [
-    {
-      "key": "WFIRE",
-      "code": "WFIREY",
-      "kind": "fire",
-      "level": "moderate",
-      "nameZh": "火災危險警告",
-      "nameEn": "Fire Danger Warning",
-      "typeZh": "黃色",
-      "typeEn": "Yellow",
-      "actionCode": "ISSUE",
-      "issueTime": "2026-11-08T09:45:00+08:00",
-      "updateTime": "2026-11-08T09:45:00+08:00"
-    }
-  ],
+  "warnings": [],
   "forecast": {
-    "updateTime": "2026-11-08T11:30:00+08:00",
+    "updateTime": "2026-11-08T16:30:00+08:00",
     "generalSituationZh": "一道冷鋒會在明日初時橫過廣東沿岸，受隨後的強烈東北季候風影響，該區北風增強，氣溫顯著下降，本週中期廣東普遍晴朗及非常乾燥，早上清涼，日夜溫差頗大。預料季候風會在本週後期緩和，該區氣溫回升。而高空擾動會在接近週末為華南帶來驟雨。此外，熱帶氣旋查帕卡會在未來兩三日橫過日本以南海域。",
     "generalSituationEn": "A cold front will move across the coast of Guangdong at first tomorrow. Under the influence of the associated intense northeast monsoon, winds will strengthen from the north and temperatures will fall appreciably over the region. The weather will be generally fine and very dry over Guangdong midweek this week. It will be cool in the morning. The temperature difference between day and night will be rather large. The monsoon is expected to moderate in the latter part of this week, temperatures will rise over the region. Upper-air disturbances will bring showers to southern China towards the weekend. Besides, Tropical Cyclone Cempaka will move across the seas south of Japan in the next couple of days.",
     "days": [
