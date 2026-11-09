@@ -2,36 +2,36 @@
   "schemaVersion": 1,
   "provider": "Hong Kong Observatory",
   "timezone": "Asia/Hong_Kong",
-  "fetchedAt": "2026-11-09T19:51:14+08:00",
+  "fetchedAt": "2026-11-10T06:32:25+08:00",
   "sources": {
     "current": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc",
     "warnings": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc",
     "forecast": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc"
   },
   "current": {
-    "updateTime": "2026-11-09T19:02:00+08:00",
-    "icon": 70,
-    "iconZh": "天色良好",
-    "iconEn": "Fine",
+    "updateTime": "2026-11-10T06:02:00+08:00",
+    "icon": 50,
+    "iconZh": "陽光充沛",
+    "iconEn": "Sunny",
     "temperature": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 22,
+      "value": 18,
       "unit": "C",
-      "time": "2026-11-09T19:00:00+08:00",
-      "min": 20,
-      "max": 22
+      "time": "2026-11-10T06:00:00+08:00",
+      "min": 15,
+      "max": 19
     },
     "humidity": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 48,
+      "value": 44,
       "unit": "percent",
-      "time": "2026-11-09T19:00:00+08:00"
+      "time": "2026-11-10T06:00:00+08:00"
     },
     "rainfall": {
-      "startTime": "2026-11-09T17:45:00+08:00",
-      "endTime": "2026-11-09T18:45:00+08:00",
+      "startTime": "2026-11-10T04:45:00+08:00",
+      "endTime": "2026-11-10T05:45:00+08:00",
       "unit": "mm",
       "max": 0,
       "districtCount": 18,
@@ -72,9 +72,9 @@
     }
   ],
   "forecast": {
-    "updateTime": "2026-11-09T18:25:00+08:00",
-    "generalSituationZh": "東北季候風會在未來一兩日為廣東帶來普遍晴朗及非常乾燥的天氣，該區早上清涼，日夜溫差頗大。隨著季候風在本週後期緩和，該區氣溫回升。預料受高空擾動影響，週末期間華南雲量增多及有幾陣驟雨，下週初沿岸地區天氣較為潮濕。而另一股東北季候風會在下週中期影響廣東沿岸。此外，熱帶氣旋查帕卡會在未來一兩日橫過日本以南海域，隨後逐漸演變為溫帶氣旋。",
-    "generalSituationEn": "The northeast monsoon will bring generally fine and very dry weather to Guangdong in the next couple of days. It will be cool in the morning over the region with rather large temperature difference between day and night. With the monsoon moderating in the latter part of this week, temperatures will rise over the region. Under the influence of upper-air disturbances, it will be cloudier with a few showers over southern China over the weekend. The weather will be relatively humid over the coastal areas early next week. Another surge of the northeast monsoon will affect the coast of Guangdong midweek next week. Besides, Tropical Cyclone Cempaka will move across the seas south of Japan in the next couple of days, then evolve into an extratropical cyclone gradually.",
+    "updateTime": "2026-11-10T04:50:00+08:00",
+    "generalSituationZh": "東北季候風會在今明兩日為廣東帶來普遍晴朗及非常乾燥的天氣，該區早上清涼，日夜溫差頗大。隨著季候風在本週後期緩和，該區氣溫回升。預料受高空擾動影響，週末期間華南雲量增多及有幾陣驟雨，下週初沿岸地區天氣較為潮濕。而另一股東北季候風會在下週中期影響廣東沿岸。此外，熱帶氣旋查帕卡會在今明兩日橫過日本以南海域，隨後逐漸演變為溫帶氣旋。",
+    "generalSituationEn": "The northeast monsoon will bring generally fine and very dry weather to Guangdong today and tomorrow. It will be cool in the morning over the region with rather large temperature difference between day and night. With the monsoon moderating in the latter part of this week, temperatures will rise over the region. Under the influence of upper-air disturbances, it will be cloudier with a few showers over southern China over the weekend. The weather will be relatively humid over the coastal areas early next week. Another surge of the northeast monsoon will affect the coast of Guangdong midweek next week. Besides, Tropical Cyclone Cempaka will move across the seas south of Japan today and tomorrow, then evolve into an extratropical cyclone gradually.",
     "days": [
       {
         "date": "2026-11-10",
@@ -82,8 +82,8 @@
         "weekEn": "Tuesday",
         "weatherZh": "早上清涼。天晴。日間非常乾燥。",
         "weatherEn": "Cool in the morning. Fine. Very dry during the day.",
-        "windZh": "北風5級，初時離岸6級，高地達8級。稍後東北風4級。",
-        "windEn": "North force 5, occasionally force 6 offshore and up to force 8 on high ground at first. Northeast force 4 later.",
+        "windZh": "北風5級，初時離岸及高地6級。稍後東北風4級。",
+        "windEn": "North force 5, force 6 offshore and on high ground at first. Northeast force 4 later.",
         "maxTemp": 23,
         "minTemp": 17,
         "icon": 92,
