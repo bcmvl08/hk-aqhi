@@ -2,36 +2,36 @@
   "schemaVersion": 1,
   "provider": "Hong Kong Observatory",
   "timezone": "Asia/Hong_Kong",
-  "fetchedAt": "2026-11-17T22:42:13+08:00",
+  "fetchedAt": "2026-11-18T07:00:16+08:00",
   "sources": {
     "current": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc",
     "warnings": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc",
     "forecast": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc"
   },
   "current": {
-    "updateTime": "2026-11-17T22:02:00+08:00",
-    "icon": 77,
-    "iconZh": "天色大致良好",
-    "iconEn": "Mainly Fine",
+    "updateTime": "2026-11-18T06:02:00+08:00",
+    "icon": 52,
+    "iconZh": "短暫陽光",
+    "iconEn": "Sunny Intervals",
     "temperature": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 25,
+      "value": 24,
       "unit": "C",
-      "time": "2026-11-17T22:00:00+08:00",
-      "min": 21,
-      "max": 25
+      "time": "2026-11-18T06:00:00+08:00",
+      "min": 20,
+      "max": 24
     },
     "humidity": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 83,
+      "value": 86,
       "unit": "percent",
-      "time": "2026-11-17T22:00:00+08:00"
+      "time": "2026-11-18T06:00:00+08:00"
     },
     "rainfall": {
-      "startTime": "2026-11-17T20:45:00+08:00",
-      "endTime": "2026-11-17T21:45:00+08:00",
+      "startTime": "2026-11-18T04:45:00+08:00",
+      "endTime": "2026-11-18T05:45:00+08:00",
       "unit": "mm",
       "max": 0,
       "districtCount": 18,
@@ -45,18 +45,18 @@
   },
   "warnings": [],
   "forecast": {
-    "updateTime": "2026-11-17T16:30:00+08:00",
-    "generalSituationZh": "一道冷鋒會在明日稍後橫過廣東沿岸，該區北風增強及有幾陣雨，氣溫顯著下降。受隨後的強烈東北季候風及一道雲雨帶影響，本週後期華南地區普遍清涼，內陸地區早晚寒冷。預料一股達強風程度的偏東氣流會在下週初影響華南沿岸。",
-    "generalSituationEn": "A cold front will move across the coast of Guangdong later tomorrow. Winds will strengthen from the north and there will be a few rain patches over the region. Temperatures will fall appreciably. Under the influence of the associated intense northeast monsoon and a band of rain and clouds, the weather will be generally cool over southern China in the latter part of this week. It will be cold in the morning and at night over inland areas. A strong easterly airstream is expected to affect the coast of southern China early next week.",
+    "updateTime": "2026-11-18T06:30:00+08:00",
+    "generalSituationZh": "一道冷鋒會在今日稍後橫過廣東沿岸，該區北風增強及有幾陣雨，氣溫顯著下降。受隨後的強烈東北季候風及一道雲雨帶影響，本週後期華南地區普遍清涼，內陸地區早晚寒冷。預料一股達強風程度的偏東氣流會在下週初影響華南沿岸。",
+    "generalSituationEn": "A cold front will move across the coast of Guangdong later today. Winds will strengthen from the north and there will be a few rain patches over the region. Temperatures will fall appreciably. Under the influence of the associated intense northeast monsoon and a band of rain and clouds, the weather will be generally cool over southern China in the latter part of this week. It will be cold in the morning and at night over inland areas. A strong easterly airstream is expected to affect the coast of southern China early next week.",
     "days": [
       {
         "date": "2026-11-18",
         "weekZh": "星期三",
         "weekEn": "Wednesday",
-        "weatherZh": "大致多雲。日間短暫時間有陽光，稍後有一兩陣雨，晚上氣溫下降。",
-        "weatherEn": "Mainly cloudy. Sunny intervals during the day. One or two rain patches later. Temperatures will fall at night.",
-        "windZh": "東風3級，稍後北風4至5級，離岸及高地間中6級。",
-        "windEn": "East force 3, north force 4 to 5 later, occasionally force 6 offshore and on high ground.",
+        "weatherZh": "短暫時間有陽光。稍後有一兩陣雨，晚上氣溫下降。",
+        "weatherEn": "Sunny intervals. One or two rain patches later. Temperatures will fall at night.",
+        "windZh": "微風2級，稍後轉吹北風4至5級，離岸及高地間中6級。",
+        "windEn": "Light winds force 2, becoming north force 4 to 5 later, occasionally force 6 offshore and on high ground.",
         "maxTemp": 27,
         "minTemp": 21,
         "icon": 54,
