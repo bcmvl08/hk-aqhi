@@ -2,68 +2,96 @@
   "schemaVersion": 1,
   "provider": "Hong Kong Observatory",
   "timezone": "Asia/Hong_Kong",
-  "fetchedAt": "2026-11-23T22:58:24+08:00",
+  "fetchedAt": "2026-11-24T10:23:00+08:00",
   "sources": {
     "current": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc",
     "warnings": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc",
     "forecast": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc"
   },
   "current": {
-    "updateTime": "2026-11-23T22:02:00+08:00",
+    "updateTime": "2026-11-24T10:02:00+08:00",
     "icon": 62,
     "iconZh": "微雨",
     "iconEn": "Light Rain",
     "temperature": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 23,
+      "value": 21,
       "unit": "C",
-      "time": "2026-11-23T22:00:00+08:00",
-      "min": 21,
-      "max": 24
+      "time": "2026-11-24T10:00:00+08:00",
+      "min": 19,
+      "max": 23
     },
     "humidity": {
       "placeZh": "香港天文台",
       "placeEn": "Hong Kong Observatory",
-      "value": 91,
+      "value": 80,
       "unit": "percent",
-      "time": "2026-11-23T22:00:00+08:00"
+      "time": "2026-11-24T10:00:00+08:00"
     },
     "rainfall": {
-      "startTime": "2026-11-23T20:45:00+08:00",
-      "endTime": "2026-11-23T21:45:00+08:00",
+      "startTime": "2026-11-24T08:45:00+08:00",
+      "endTime": "2026-11-24T09:45:00+08:00",
       "unit": "mm",
-      "max": 0,
+      "max": 2,
       "districtCount": 18,
-      "leaders": []
+      "leaders": [
+        {
+          "placeZh": "南區",
+          "placeEn": "Southern District",
+          "value": 2
+        }
+      ]
     },
-    "uv": null,
-    "messageZh": "",
-    "messageEn": "",
+    "uv": {
+      "placeZh": "京士柏",
+      "placeEn": "King's Park",
+      "value": 2,
+      "descZh": "低",
+      "descEn": "low",
+      "recordDescZh": "過去一小時",
+      "recordDescEn": "During the past hour"
+    },
+    "messageZh": "強烈季候風信號現正生效。",
+    "messageEn": "The Strong Monsoon Signal has been issued.",
     "cycloneMessageZh": "",
     "cycloneMessageEn": ""
   },
-  "warnings": [],
+  "warnings": [
+    {
+      "key": "WMSGNL",
+      "code": "WMSGNL",
+      "kind": "wind",
+      "level": "alert",
+      "nameZh": "強烈季候風信號",
+      "nameEn": "Strong Monsoon Signal",
+      "typeZh": "",
+      "typeEn": "",
+      "actionCode": "ISSUE",
+      "issueTime": "2026-11-24T08:50:00+08:00",
+      "updateTime": "2026-11-24T08:50:00+08:00"
+    }
+  ],
   "forecast": {
-    "updateTime": "2026-11-23T22:05:00+08:00",
-    "generalSituationZh": "一道冷鋒會在明早橫過廣東沿岸，並為該區帶來有雨的天氣，受冷鋒隨後的東北季候風影響，明日廣東天氣逐步轉涼，隨後一兩日該區早晚清涼。隨著東北季候風緩和及覆蓋廣東的雲帶轉薄，本週後期該區天色逐漸好轉，氣溫回升。預料一股較乾燥的東北季候風補充會在週末期間影響華南沿岸，該區日夜溫差頗大。",
-    "generalSituationEn": "A cold front will move across the coast of Guangdong tomorrow morning and bring rainy weather to the region. Under the influence of the northeast monsoon associated with the cold front, it will become cooler progressively over Guangdong tomorrow. It will be cool in the morning and at night in the following couple of days over the region. With the northeast monsoon moderating and the band of clouds covering Guangdong thinning out, the weather will improve gradually and temperatures will rise over the region in the latter part of this week. A relatively dry replenishment of the northeast monsoon is expected to affect the coast of southern China over the weekend. The temperature difference between day and night will be rather large over the region.",
+    "updateTime": "2026-11-24T09:50:00+08:00",
+    "generalSituationZh": "受與冷鋒相關的強烈東北季候風及一道雲雨帶影響，今日廣東天氣逐步轉涼，有幾陣雨，未來一兩日該區早晚清涼。隨著季候風緩和及雲帶轉薄，本週後期該區天色逐漸好轉，氣溫回升。預料一股較乾燥的東北季候風補充會在週末期間影響華南沿岸，該區日夜溫差頗大。",
+    "generalSituationEn": "Under the influence of an intense northeast monsoon associated with a cold front and a band of rain and clouds, it will become cooler progressively with a few rain patches over Guangdong today. It will be cool in the morning and at night over the region in the next couple of days. With the monsoon moderating and the band of clouds thinning out, the weather will improve gradually and temperatures will rise over the region in the latter part of this week. A relatively dry replenishment of the northeast monsoon is expected to affect the coast of southern China over the weekend. The temperature difference between day and night will be rather large over the region.",
     "days": [
       {
         "date": "2026-11-24",
         "weekZh": "星期二",
         "weekEn": "Tuesday",
-        "weatherZh": "多雲，有幾陣雨，初時雨勢較為頻密。天氣逐步轉涼。",
-        "weatherEn": "Cloudy with a few rain patches. Rain will be more frequent at first. Becoming cooler progressively.",
-        "windZh": "北風4至5級，離岸及高地間中6級。",
-        "windEn": "North force 4 to 5, occasionally force 6 offshore and on high ground.",
+        "weatherZh": "大致多雲，有一兩陣雨。天氣稍涼。",
+        "weatherEn": "Mainly cloudy and slightly cooler with one or two rain patches.",
+        "windZh": "北風4至5級，離岸及高地6級。",
+        "windEn": "North force 4 to 5, force 6 offshore and on high ground.",
         "maxTemp": 23,
-        "minTemp": 18,
+        "minTemp": 19,
         "icon": 92,
         "iconZh": "涼",
         "iconEn": "Cool",
-        "psrZh": "中",
-        "psrEn": "Medium"
+        "psrZh": "低",
+        "psrEn": "Low"
       },
       {
         "date": "2026-11-25",
